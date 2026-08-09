@@ -4,7 +4,7 @@
 
 ## 当前状态
 
-首版已使用 Astro + TypeScript + npm 实现，配置为通过 GitHub Actions 发布到 GitHub Pages 用户站点 `https://gepingchen.github.io`。站点保持完全静态，不启用分析服务；自定义域名在首版上线后再决定。
+首版已使用 Astro + TypeScript + npm 实现，并通过 GitHub Actions 发布到 GitHub Pages 用户站点：<https://gepingchen.github.io>。站点保持完全静态，不启用分析服务；自定义域名在首版上线后再决定。
 
 已有文件：
 
@@ -29,7 +29,7 @@ npm run verify
 
 ## 建议的下一步
 
-1. 在真实 GitHub Pages 地址复核分享预览和所有生产路由。
+1. 审阅首版英文文案与项目取舍。
 2. 补充 Google Scholar / ORCID（如公开）以及经过授权的头像（如需要）。
 3. 明确哪些 manuscript-in-preparation 项目可以公开；未确认内容当前不会构建。
 

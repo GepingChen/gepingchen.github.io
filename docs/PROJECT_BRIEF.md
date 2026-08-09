@@ -1,6 +1,6 @@
 # 项目简报与决策记录
 
-状态：首版已实现，等待/进行首次 GitHub Pages 发布
+状态：首版已实现并发布到 GitHub Pages
 最后更新：2026-08-09
 
 这个文件记录会影响实现方向的产品决定。专业邮箱、GitHub、LinkedIn 和公开仓库已经确认；Google Scholar / ORCID、头像和未发表项目公开范围仍待确认。

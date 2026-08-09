@@ -1,6 +1,6 @@
 # 首版网站实施计划
 
-状态：首版已实现，等待/进行首次发布
+状态：首版已实现并完成首次发布
 计划日期：2026-08-09
 内容来源：`/Users/chgp/Desktop/intern_cv_26_1.tex`（只读）
 
@@ -182,6 +182,8 @@
 - 用真实 URL 复核 canonical、sitemap、分享预览、刷新深层链接和 404，并确认常见 CV 路径不会暴露文件。
 
 通过条件：`https://gepingchen.github.io` 可访问；后续推送到 `main` 会自动部署；Pull Request 会运行构建检查；没有购买域名或启用分析服务。
+
+验证记录（2026-08-09）：GitHub Actions build 与 deploy 均成功；Home、Research、Projects、robots、sitemap 和分享图返回 200，自定义 404 返回 404；production canonical 和 Open Graph URL 使用正式域名。
 
 ## 7. 最简单的零域名发布 Tutorial
 
