@@ -1,0 +1,36 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  publication: CollectionEntry<'publications'>;
+}
+
+const { publication } = Astro.props;
+const { data } = publication;
+const authorText = data.authors.join(', ');
+const statusLabels = {
+  published: 'Published',
+  accepted: 'Accepted',
+  'under-review': 'Under review',
+  preprint: 'Preprint',
+  'working-paper': 'Working paper',
+  'in-progress': 'In progress',
+};
+---
+
+<article class="publication-item">
+  <div class="publication-topline">
+    <span class={`status status-${data.status}`}>{statusLabels[data.status]}</span>
+    <span>{data.year}</span>
+  </div>
+  <h3>{data.title}</h3>
+  <p class="publication-authors">{authorText}</p>
+  {data.venue && <p class="publication-venue">{data.venue}</p>}
+  <p>{data.summary}</p>
+  {data.contribution && <p class="publication-contribution"><strong>Contribution:</strong> {data.contribution}</p>}
+  <div class="evidence-links" aria-label={`Links for ${data.title}`}>
+    {data.links.map((link) => (
+      <a href={link.url}>{link.label}<span aria-hidden="true"> ↗</span></a>
+    ))}
+  </div>
+</article>

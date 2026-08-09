@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://gepingchen.github.io/sitemap-index.xml

@@ -1,0 +1,47 @@
+---
+import { getCollection } from 'astro:content';
+import ProjectCard from '../components/ProjectCard.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const projects = (
+  await getCollection('projects', ({ data }) => !data.draft && data.visibility === 'public')
+).sort((a, b) => a.data.order - b.data.order);
+---
+
+<BaseLayout
+  title="Projects — Geping Chen"
+  description="Selected research and applied projects by Geping Chen, with individual contributions, methods, and evidence links."
+>
+  <header class="page-hero">
+    <div class="shell">
+      <p class="eyebrow">Projects</p>
+      <h1>Selected work, contribution by contribution.</h1>
+      <p class="page-intro">Each project separates the broader collaboration from my role, the methods I used, and the public evidence available for review.</p>
+    </div>
+  </header>
+
+  <section class="section" aria-labelledby="project-list-title">
+    <div class="shell">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Research & applied work</p>
+          <h2 id="project-list-title">Three evidence-backed projects.</h2>
+        </div>
+        <p>Ongoing private or manuscript-stage work stays off the public site until its scope and evidence links are approved.</p>
+      </div>
+      <div class="project-grid">
+        {projects.map((project, index) => <ProjectCard project={project} index={index + 1} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-band" aria-labelledby="project-contact-title">
+    <div class="shell contact-band-grid">
+      <h2 id="project-contact-title">Need a closer look?</h2>
+      <div>
+        <p>Public papers, code, and official project pages are linked above. I am happy to discuss the methods and my contribution in more detail.</p>
+        <a href="mailto:gepingc@iastate.edu">gepingc@iastate.edu <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
