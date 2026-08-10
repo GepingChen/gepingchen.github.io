@@ -11,10 +11,10 @@
 - 技术栈：Astro + TypeScript + npm + Markdown/MDX 内容集合。
 - 输出方式：完全静态；不添加 React、Tailwind、CMS、数据库或服务端 adapter。
 - 部署：通过 GitHub Actions 发布到 GitHub Pages 用户站点 `https://gepingchen.github.io`；仓库为 `GepingChen/gepingchen.github.io`。
-- 导航：Home、Research、Projects。
+- 导航：Home、Research、Projects、Poetry。
 - About、Experience、Skills 和 Contact 合并到 Home。
 - CV 仅作私有内容来源；不创建 CV 下载、公开 PDF 或独立 `/cv/` 路由。
-- 博客：只保留数据模型；不创建空路由、RSS、搜索或导航入口。
+- 博客：已按 2026-08-10 的明确请求启用 Poetry 内容集合与 `/blog/poetry/`；不扩展 RSS、搜索、评论或完整 Writing 系统。
 - 视觉：modern academic minimal；浅色背景、深灰/海军蓝文字、低饱和蓝绿色强调色、少量边框，无复杂动效。
 
 ## 2. CV 推导的英文定位草案

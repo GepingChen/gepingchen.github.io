@@ -107,9 +107,9 @@ draft: true
 sources: []
 ```
 
-## Future Post
+## Post / Poetry
 
-保留模型即可；MVP 没有真实文章时不要生成空文章或公开 Writing 导航。
+Poetry 已在首篇真实诗歌加入后注册为内容集合。其他文章类型仍只保留模型；没有真实文章时不要生成空文章或公开 Writing 导航。
 
 ```yaml
 title: "TBD"
@@ -123,6 +123,8 @@ series: null
 canonicalUrl: null
 draft: true
 ```
+
+Poetry 额外要求 `publishedAt` 非空，并可用 `displayDate` 保存作者指定的页面日期写法；内部排序仍以 ISO 8601 日期为准。
 
 ## Site Profile / Global Settings
 

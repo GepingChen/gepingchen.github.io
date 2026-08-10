@@ -14,6 +14,18 @@ const editorialFields = {
   sources: z.array(z.string().min(1)).min(1),
 };
 
+export const futurePostSchema = z.object({
+  title: z.string().min(1),
+  summary: z.string().min(1),
+  publishedAt: z.coerce.date().nullable().default(null),
+  updatedAt: z.coerce.date().nullable().default(null),
+  language: z.enum(['en', 'zh']).default('en'),
+  tags: z.array(z.string().min(1)).default([]),
+  series: z.string().nullable().default(null),
+  canonicalUrl: z.url().nullable().default(null),
+  draft: z.boolean().default(true),
+});
+
 const projects = defineCollection({
   loader: glob({ base: './src/content/projects', pattern: '**/*.{md,mdx}' }),
   schema: z.object({
@@ -73,18 +85,12 @@ const experiences = defineCollection({
   }),
 });
 
-// Register this schema as a collection only when real posts exist. Keeping the
-// schema now reserves the content boundary without creating an empty route.
-export const futurePostSchema = z.object({
-  title: z.string().min(1),
-  summary: z.string().min(1),
-  publishedAt: z.coerce.date().nullable().default(null),
-  updatedAt: z.coerce.date().nullable().default(null),
-  language: z.enum(['en', 'zh']).default('en'),
-  tags: z.array(z.string().min(1)).default([]),
-  series: z.string().nullable().default(null),
-  canonicalUrl: z.url().nullable().default(null),
-  draft: z.boolean().default(true),
+const poetry = defineCollection({
+  loader: glob({ base: './src/content/poetry', pattern: '**/*.{md,mdx}' }),
+  schema: futurePostSchema.extend({
+    publishedAt: z.coerce.date(),
+    displayDate: z.string().min(1),
+  }),
 });
 
-export const collections = { projects, publications, experiences };
+export const collections = { projects, publications, experiences, poetry };

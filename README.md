@@ -33,12 +33,13 @@ npm run verify
 2. 补充 Google Scholar / ORCID（如公开）以及经过授权的头像（如需要）。
 3. 明确哪些 manuscript-in-preparation 项目可以公开；未确认内容当前不会构建。
 
-首版未引入 React、Tailwind、CMS、数据库或服务端适配器；内容使用 Astro 内容集合和 Markdown，保持静态输出。
+首版未引入 React、Tailwind、CMS、数据库或服务端适配器；内容使用 Astro 内容集合和 Markdown，保持静态输出。2026-08-10 起，站点新增独立的 Poetry 内容集合与 `/blog/poetry/` 静态栏目；未引入完整博客、RSS、搜索或评论系统。
 
 ## MVP 页面
 
 - Home
 - Research
 - Projects
+- Poetry
 
-About、Experience 和 Contact 合并进 Home。CV 只作为内容来源，不创建下载文件或独立公开路由。Writing/Posts 只保留内容模型，不创建空页面或主导航入口。
+About、Experience 和 Contact 合并进 Home。CV 只作为内容来源，不创建下载文件或独立公开路由。Poetry 已因首篇真实内容而公开；其他 Writing/Posts 类型仍只保留内容模型，不创建空页面或主导航入口。

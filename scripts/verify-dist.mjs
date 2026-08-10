@@ -6,6 +6,8 @@ const requiredFiles = [
   'index.html',
   'research/index.html',
   'projects/index.html',
+  'blog/poetry/index.html',
+  'blog/poetry/graduation-song/index.html',
   '404.html',
   'robots.txt',
   'sitemap-index.xml',

@@ -1,0 +1,84 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const poems = await getCollection('poetry', ({ data }) => !data.draft);
+
+  return poems.map((poem) => ({
+    params: { slug: poem.id },
+    props: { poem },
+  }));
+}
+
+interface Props {
+  poem: CollectionEntry<'poetry'>;
+}
+
+const { poem } = Astro.props;
+const { Content } = await render(poem);
+---
+
+<BaseLayout
+  title={`${poem.data.title} — Geping Chen`}
+  description={poem.data.summary}
+  currentPath="/blog/poetry/"
+  language={poem.data.language}
+  socialType="article"
+>
+  <article class="poem-page">
+    <div class="shell poem-column">
+      <a class="poem-back" href="/blog/poetry/"><span aria-hidden="true">←</span> Poetry</a>
+      <h1>{poem.data.title}</h1>
+      <div class="poem-body">
+        <Content />
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .poem-page {
+    padding-block: clamp(4rem, 10vw, 7rem);
+  }
+
+  .poem-column {
+    max-width: 42rem;
+  }
+
+  .poem-back {
+    display: inline-flex;
+    min-height: 2.75rem;
+    margin-bottom: 2rem;
+    align-items: center;
+    gap: 0.35rem;
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    font-weight: 650;
+  }
+
+  .poem-page h1 {
+    margin-bottom: clamp(2.75rem, 8vw, 4.5rem);
+  }
+
+  .poem-body {
+    max-width: 36rem;
+    font-size: clamp(1.04rem, 2.2vw, 1.15rem);
+    line-height: 2;
+  }
+
+  .poem-body :global(p) {
+    margin: 0 0 2.25rem;
+    white-space: pre-line;
+  }
+
+  .poem-body :global(p:last-child) {
+    margin: 3.75rem 0 0;
+    color: var(--color-muted);
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    text-align: right;
+  }
+</style>

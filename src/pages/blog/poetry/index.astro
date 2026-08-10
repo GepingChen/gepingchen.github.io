@@ -1,0 +1,82 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const poems = (await getCollection('poetry', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf(),
+);
+---
+
+<BaseLayout
+  title="Poetry — Geping Chen"
+  description="Poetry by Geping Chen."
+  currentPath="/blog/poetry/"
+>
+  <section class="poetry-index">
+    <div class="shell reading-column">
+      <p class="poetry-kicker">Blog / Poetry</p>
+      <h1>Poetry</h1>
+      <ol class="poetry-list">
+        {poems.map((poem) => (
+          <li>
+            <a href={`/blog/poetry/${poem.id}/`} lang={poem.data.language}>{poem.data.title}</a>
+            <time datetime={poem.data.publishedAt.toISOString().slice(0, 10)}>{poem.data.displayDate}</time>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .poetry-index {
+    padding-block: clamp(4rem, 10vw, 7rem);
+  }
+
+  .poetry-kicker {
+    margin-bottom: 1rem;
+    color: var(--color-accent-deep);
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .poetry-list {
+    margin: 2.5rem 0 0;
+    padding: 0;
+    border-bottom: 1px solid var(--color-line);
+    list-style: none;
+  }
+
+  .poetry-list li {
+    display: flex;
+    padding-block: 1.25rem;
+    border-top: 1px solid var(--color-line);
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+
+  .poetry-list a {
+    font-size: 1.2rem;
+    font-weight: 650;
+  }
+
+  .poetry-list time {
+    flex: none;
+    color: var(--color-muted);
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+  }
+
+  @media (max-width: 34rem) {
+    .poetry-list li {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+  }
+</style>
