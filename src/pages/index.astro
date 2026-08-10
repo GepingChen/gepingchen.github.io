@@ -1,5 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import portraitImage from '../assets/profile-portrait.jpg';
 import { profile } from '../data/profile';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
@@ -27,17 +29,31 @@ const formatRange = (startDate: string, endDate: string | null) => {
   description="Geping Chen is a Statistics PhD Candidate working on causal inference, tabular foundation models, Bayesian modeling, and experimental design."
 >
   <section class="home-intro">
-    <div class="shell reading-column">
-      <p class="home-kicker">Statistics · Causal inference · Machine learning</p>
-      <h1>{profile.name}</h1>
-      <p class="home-lead">I’m a {profile.affiliation}.</p>
-      <p>{profile.shortBio}</p>
-      <p>My current work spans causal inference, tabular foundation models, Bayesian modeling, and optimal experimental design.</p>
-      <nav class="profile-links" aria-label="Profile links">
-        <a href="/research/">Research & publications</a>
-        <a href="/projects/">Projects & contributions</a>
-        <a href={`mailto:${profile.email}`}>Email</a>
-      </nav>
+    <div class="shell reading-column home-intro-grid">
+      <figure class="home-portrait">
+        <Image
+          src={portraitImage}
+          alt="Portrait of Geping Chen"
+          width={416}
+          height={416}
+          format="webp"
+          quality={84}
+          loading="eager"
+          fetchpriority="high"
+        />
+      </figure>
+      <div class="home-intro-copy">
+        <p class="home-kicker">Statistics · Causal inference · Machine learning</p>
+        <h1>{profile.name}</h1>
+        <p class="home-lead">I’m a {profile.affiliation}.</p>
+        <p>{profile.shortBio}</p>
+        <p>My current work spans causal inference, tabular foundation models, Bayesian modeling, and optimal experimental design.</p>
+        <nav class="profile-links" aria-label="Profile links">
+          <a href="/research/">Research & publications</a>
+          <a href="/projects/">Projects & contributions</a>
+          <a href={`mailto:${profile.email}`}>Email</a>
+        </nav>
+      </div>
     </div>
   </section>
 

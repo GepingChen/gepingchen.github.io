@@ -3,7 +3,7 @@
 状态：首版已实现并发布到 GitHub Pages
 最后更新：2026-08-10
 
-这个文件记录会影响实现方向的产品决定。专业邮箱、GitHub、LinkedIn 和公开仓库已经确认；Google Scholar / ORCID、头像和未发表项目公开范围仍待确认。
+这个文件记录会影响实现方向的产品决定。专业邮箱、GitHub、LinkedIn、公开仓库和首页头像已经确认；Google Scholar / ORCID 和未发表项目公开范围仍待确认。
 
 ## 一句话目标
 

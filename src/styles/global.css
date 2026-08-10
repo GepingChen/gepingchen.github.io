@@ -178,6 +178,27 @@ ul {
   padding-block: clamp(4.5rem, 11vw, 7.5rem) clamp(3.75rem, 8vw, 5.5rem);
 }
 
+.home-intro-grid {
+  display: grid;
+  max-width: 54rem;
+  gap: 1.75rem;
+}
+
+.home-portrait {
+  width: 8.75rem;
+  margin: 0;
+}
+
+.home-portrait img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--color-line);
+  border-radius: 0.35rem;
+  background: var(--color-surface-muted);
+  box-shadow: 0 1rem 2.5rem rgb(36 35 32 / 12%);
+}
+
 .home-intro p {
   max-width: 43rem;
   margin-bottom: 1rem;
@@ -544,6 +565,24 @@ ul {
 }
 
 @media (min-width: 42rem) {
+  .home-intro-grid {
+    grid-template-columns: minmax(0, 1fr) clamp(10.5rem, 20vw, 12.5rem);
+    align-items: center;
+    gap: clamp(2.5rem, 6vw, 4rem);
+  }
+
+  .home-intro-copy {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .home-portrait {
+    grid-column: 2;
+    grid-row: 1;
+    width: 100%;
+    justify-self: end;
+  }
+
   .experience-item {
     grid-template-columns: 8rem 1fr;
     gap: 1.75rem;
