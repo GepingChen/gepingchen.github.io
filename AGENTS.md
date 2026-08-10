@@ -25,7 +25,7 @@ If those documents disagree, flag the conflict. Do not silently choose one.
 
 The Astro, TypeScript, and npm site is implemented as a fully static build. It is configured for the owner's GitHub Pages user site at `https://gepingchen.github.io` through GitHub Actions, using the public `GepingChen/gepingchen.github.io` repository.
 
-The user authorized implementation and initial publication on 2026-08-09. Future commits, pushes, deployments, external resources, analytics, or content-scope expansions still require explicit authorization.
+The user authorized implementation and initial publication on 2026-08-09. On 2026-08-10, the user added standing authorization for Codex to commit and push verified, in-scope repository changes made during conversations; pushes to `main` may trigger the existing GitHub Pages deployment workflow. This standing authorization does not extend to unrelated or pre-existing user changes, private or unreviewed content, purchasing a domain, creating new external resources, enabling analytics, or expanding the approved content scope.
 
 ## Product Requirements
 
@@ -61,7 +61,8 @@ The user authorized implementation and initial publication on 2026-08-09. Future
 - Avoid CMS, database, authentication, comments, search, newsletter, and runtime APIs in the MVP unless requirements change.
 - Do not add animation that obscures content, blocks input, or ignores reduced-motion preferences.
 - Do not modify unrelated files or discard uncommitted work.
-- Do not commit, push, deploy, purchase a domain, create external resources, or enable analytics without explicit user authorization.
+- After completing and verifying an in-scope change, commit only the files belonging to that change and push the current branch by default. Existing automated checks and deployment workflows triggered by the push are authorized. Never include unrelated or pre-existing user changes in the commit.
+- Purchasing a domain, creating new external resources, enabling analytics, publishing private or unreviewed content, or expanding the approved content scope still requires explicit user authorization.
 - Do not claim a page, link, build, deployment, or accessibility requirement works unless it was verified in the current environment.
 
 ## Workflow
@@ -72,7 +73,8 @@ The user authorized implementation and initial publication on 2026-08-09. Future
 4. Implement a focused change that matches existing style and architecture.
 5. Run the documented checks in `README.md` or `package.json` once they exist.
 6. For UI changes, verify at narrow and wide viewport sizes, keyboard navigation, visible focus, reduced motion, missing-image behavior, and internal/external links.
-7. Report what changed, what was verified, what was skipped, and any remaining `TBD` items.
+7. Commit only the verified files belonging to the current request, then push the current branch unless a later user instruction says not to.
+8. Report what changed, what was verified, what was skipped, the commit and push status, and any remaining `TBD` items.
 
 Never fabricate commands in status reports. If the project has no runnable checks yet, say so.
 
