@@ -87,9 +87,13 @@ const experiences = defineCollection({
 
 const poetry = defineCollection({
   loader: glob({ base: './src/content/poetry', pattern: '**/*.{md,mdx}' }),
-  schema: futurePostSchema.extend({
+  schema: futurePostSchema.omit({ language: true }).extend({
+    titleZh: z.string().min(1),
     publishedAt: z.coerce.date(),
     displayDate: z.string().min(1),
+    languages: z.tuple([z.literal('en'), z.literal('zh')]),
+    englishStanzas: z.array(z.string().min(1)).min(1),
+    chineseStanzas: z.array(z.string().min(1)).min(1),
   }),
 });
 

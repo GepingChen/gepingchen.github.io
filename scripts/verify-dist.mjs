@@ -62,6 +62,16 @@ for (const file of htmlFiles) {
   }
 }
 
+const poemHtml = readFileSync(join(dist, 'blog/poetry/graduation-song/index.html'), 'utf8');
+const englishOpening = 'Stepping out through the West Gate';
+const chineseOpening = '从西门走出';
+const englishPosition = poemHtml.indexOf(englishOpening);
+const chinesePosition = poemHtml.indexOf(chineseOpening);
+
+if (englishPosition === -1) failures.push('Missing English poetry translation.');
+if (chinesePosition === -1) failures.push('Missing Chinese poetry original.');
+if (englishPosition >= chinesePosition) failures.push('English poetry translation must precede Chinese original.');
+
 if (failures.length > 0) {
   console.error(failures.join('\n'));
   process.exit(1);

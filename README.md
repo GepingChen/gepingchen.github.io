@@ -33,7 +33,7 @@ npm run verify
 2. 补充 Google Scholar / ORCID（如公开）以及经过授权的头像（如需要）。
 3. 明确哪些 manuscript-in-preparation 项目可以公开；未确认内容当前不会构建。
 
-首版未引入 React、Tailwind、CMS、数据库或服务端适配器；内容使用 Astro 内容集合和 Markdown，保持静态输出。2026-08-10 起，站点新增独立的 Poetry 内容集合与 `/blog/poetry/` 静态栏目；未引入完整博客、RSS、搜索或评论系统。
+首版未引入 React、Tailwind、CMS、数据库或服务端适配器；内容使用 Astro 内容集合和 Markdown，保持静态输出。2026-08-10 起，站点新增独立的 Poetry 内容集合与 `/blog/poetry/` 静态栏目；每首诗必须同时包含英文译文与中文原文，并按英文在前、中文在后的顺序展示。未引入完整博客、RSS、搜索或评论系统。
 
 ## MVP 页面
 

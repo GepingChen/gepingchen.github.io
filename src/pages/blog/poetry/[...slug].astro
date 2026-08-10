@@ -1,6 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import { getCollection, render } from 'astro:content';
+import { getCollection } from 'astro:content';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 
 export async function getStaticPaths() {
@@ -17,22 +17,35 @@ interface Props {
 }
 
 const { poem } = Astro.props;
-const { Content } = await render(poem);
 ---
 
 <BaseLayout
   title={`${poem.data.title} — Geping Chen`}
   description={poem.data.summary}
   currentPath="/blog/poetry/"
-  language={poem.data.language}
+  language="en"
   socialType="article"
 >
   <article class="poem-page">
     <div class="shell poem-column">
       <a class="poem-back" href="/blog/poetry/"><span aria-hidden="true">←</span> Poetry</a>
-      <h1>{poem.data.title}</h1>
+      <h1>
+        <span>{poem.data.title}</span>
+        <span class="poem-title-zh" lang="zh">{poem.data.titleZh}</span>
+      </h1>
       <div class="poem-body">
-        <Content />
+        <section lang="en" aria-labelledby="english-translation">
+          <h2 id="english-translation">English translation</h2>
+          {poem.data.englishStanzas.map((stanza) => <p>{stanza}</p>)}
+        </section>
+        <hr aria-hidden="true" />
+        <section lang="zh" aria-labelledby="chinese-original">
+          <h2 id="chinese-original">中文原文</h2>
+          {poem.data.chineseStanzas.map((stanza) => <p>{stanza}</p>)}
+        </section>
+        <p class="poem-date">
+          <time datetime={poem.data.publishedAt.toISOString().slice(0, 10)}>{poem.data.displayDate}</time>
+        </p>
       </div>
     </div>
   </article>
@@ -62,18 +75,46 @@ const { Content } = await render(poem);
     margin-bottom: clamp(2.75rem, 8vw, 4.5rem);
   }
 
+  .poem-page h1 span {
+    display: block;
+  }
+
+  .poem-title-zh {
+    margin-top: 0.4rem;
+    color: var(--color-muted);
+    font-size: 0.72em;
+    font-weight: 500;
+  }
+
   .poem-body {
     max-width: 36rem;
     font-size: clamp(1.04rem, 2.2vw, 1.15rem);
     line-height: 2;
   }
 
-  .poem-body :global(p) {
+  .poem-body h2 {
+    margin: 0 0 2rem;
+    color: var(--color-accent-deep);
+    font-family: var(--font-sans);
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .poem-body p {
     margin: 0 0 2.25rem;
     white-space: pre-line;
   }
 
-  .poem-body :global(p:last-child) {
+  .poem-body hr {
+    width: 3rem;
+    margin: clamp(3.5rem, 9vw, 5.5rem) 0;
+    border: 0;
+    border-top: 1px solid var(--color-line);
+  }
+
+  .poem-body .poem-date {
     margin: 3.75rem 0 0;
     color: var(--color-muted);
     font-family: var(--font-sans);

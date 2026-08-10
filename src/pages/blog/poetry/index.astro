@@ -19,7 +19,11 @@ const poems = (await getCollection('poetry', ({ data }) => !data.draft)).sort(
       <ol class="poetry-list">
         {poems.map((poem) => (
           <li>
-            <a href={`/blog/poetry/${poem.id}/`} lang={poem.data.language}>{poem.data.title}</a>
+            <a href={`/blog/poetry/${poem.id}/`}>
+              <span lang="en">{poem.data.title}</span>
+              <span class="title-separator" aria-hidden="true"> / </span>
+              <span lang="zh">{poem.data.titleZh}</span>
+            </a>
             <time datetime={poem.data.publishedAt.toISOString().slice(0, 10)}>{poem.data.displayDate}</time>
           </li>
         ))}
@@ -62,6 +66,11 @@ const poems = (await getCollection('poetry', ({ data }) => !data.draft)).sort(
   .poetry-list a {
     font-size: 1.2rem;
     font-weight: 650;
+  }
+
+  .title-separator {
+    color: var(--color-muted);
+    font-weight: 400;
   }
 
   .poetry-list time {

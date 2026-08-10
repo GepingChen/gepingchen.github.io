@@ -113,18 +113,21 @@ Poetry 已在首篇真实诗歌加入后注册为内容集合。其他文章类�
 
 ```yaml
 title: "TBD"
+titleZh: "TBD"
 slug: "tbd"
 summary: "TBD"
 publishedAt: null
 updatedAt: null
-language: "en" # en | zh
+languages: ["en", "zh"]
+englishStanzas: []
+chineseStanzas: []
 tags: []
 series: null
 canonicalUrl: null
 draft: true
 ```
 
-Poetry 额外要求 `publishedAt` 非空，并可用 `displayDate` 保存作者指定的页面日期写法；内部排序仍以 ISO 8601 日期为准。
+Poetry 额外要求 `publishedAt` 非空，并可用 `displayDate` 保存作者指定的页面日期写法；内部排序仍以 ISO 8601 日期为准。`title`、`englishStanzas` 保存英文译文，`titleZh`、`chineseStanzas` 保存中文原文；两种内容都为必填，页面固定英文在前、中文在后。
 
 ## Site Profile / Global Settings
 
@@ -144,4 +147,4 @@ availableLanguages:
 siteUrl: null
 ```
 
-如果将来支持双语，优先让每条内容明确语言或翻译关联；不要依赖机器翻译在构建时自动生成未经审核的个人事实。
+全站仍以英文为主。Poetry 是双语例外，必须由内容文件显式保存英文译文和中文原文，不在构建时调用机器翻译；新增诗歌缺少任一语言时构建失败。
