@@ -8,6 +8,7 @@ const requiredFiles = [
   'projects/index.html',
   'blog/poetry/index.html',
   'blog/poetry/graduation-song/index.html',
+  'blog/poetry/on-solid-things/index.html',
   '404.html',
   'robots.txt',
   'sitemap-index.xml',
@@ -62,15 +63,30 @@ for (const file of htmlFiles) {
   }
 }
 
-const poemHtml = readFileSync(join(dist, 'blog/poetry/graduation-song/index.html'), 'utf8');
-const englishOpening = 'Stepping out through the West Gate';
-const chineseOpening = '从西门走出';
-const englishPosition = poemHtml.indexOf(englishOpening);
-const chinesePosition = poemHtml.indexOf(chineseOpening);
+const bilingualPoems = [
+  {
+    file: 'blog/poetry/graduation-song/index.html',
+    englishOpening: 'Stepping out through the West Gate',
+    chineseOpening: '从西门走出',
+  },
+  {
+    file: 'blog/poetry/on-solid-things/index.html',
+    englishOpening: 'I worship solid things',
+    chineseOpening: '我崇拜坚固的事物',
+  },
+];
 
-if (englishPosition === -1) failures.push('Missing English poetry translation.');
-if (chinesePosition === -1) failures.push('Missing Chinese poetry original.');
-if (englishPosition >= chinesePosition) failures.push('English poetry translation must precede Chinese original.');
+for (const poem of bilingualPoems) {
+  const poemHtml = readFileSync(join(dist, poem.file), 'utf8');
+  const englishPosition = poemHtml.indexOf(poem.englishOpening);
+  const chinesePosition = poemHtml.indexOf(poem.chineseOpening);
+
+  if (englishPosition === -1) failures.push(`Missing English translation in ${poem.file}.`);
+  if (chinesePosition === -1) failures.push(`Missing Chinese original in ${poem.file}.`);
+  if (englishPosition >= chinesePosition) {
+    failures.push(`English translation must precede Chinese original in ${poem.file}.`);
+  }
+}
 
 if (failures.length > 0) {
   console.error(failures.join('\n'));
