@@ -3,15 +3,11 @@ import { profile } from '../data/profile';
 ---
 
 <footer class="site-footer">
-  <div class="shell footer-grid">
-    <div>
-      <p class="footer-name">Geping Chen</p>
-      <p class="footer-copy">Statistics, causal inference, and tabular machine learning.</p>
-    </div>
+  <div class="shell footer-inner">
+    <p class="footer-meta">© 2026 Geping Chen</p>
     <div class="footer-contact">
-      <a href={`mailto:${profile.email}`}>{profile.email}</a>
+      <a href={`mailto:${profile.email}`}>Email</a>
       {profile.socialLinks.map((link) => <a href={link.url}>{link.label}</a>)}
     </div>
-    <p class="footer-meta">© 2026 Geping Chen</p>
   </div>
 </footer>

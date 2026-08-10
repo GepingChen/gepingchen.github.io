@@ -1,6 +1,5 @@
 ---
 import { getCollection } from 'astro:content';
-import ProjectCard from '../components/ProjectCard.astro';
 import { profile } from '../data/profile';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
@@ -27,94 +26,53 @@ const formatRange = (startDate: string, endDate: string | null) => {
   title="Geping Chen — Statistics, Causal Inference & Tabular ML"
   description="Geping Chen is a Statistics PhD Candidate working on causal inference, tabular foundation models, Bayesian modeling, and experimental design."
 >
-  <section class="hero">
-    <div class="shell hero-grid">
-      <div>
-        <p class="eyebrow">Statistics · Causal inference · Tabular ML</p>
-        <h1>Geping Chen</h1>
-        <p class="hero-deck">{profile.headline}</p>
-        <p class="hero-affiliation">{profile.affiliation}</p>
-        <p class="hero-deck">{profile.shortBio}</p>
-        <div class="button-row">
-          <a class="button" href="/research/">Explore research</a>
-          <a class="button button-secondary" href="/projects/">View selected work</a>
-        </div>
-      </div>
-
-      <aside class="at-a-glance" aria-labelledby="glance-title">
-        <h2 id="glance-title">At a glance</h2>
-        <dl class="glance-list">
-          <div>
-            <dt>Focus</dt>
-            <dd>Causal inference and tabular foundation models</dd>
-          </div>
-          <div>
-            <dt>Methods</dt>
-            <dd>Bayesian modeling and optimal design</dd>
-          </div>
-          <div>
-            <dt>Domains</dt>
-            <dd>Medicine, agriculture, and remote sensing</dd>
-          </div>
-        </dl>
-      </aside>
+  <section class="home-intro">
+    <div class="shell reading-column">
+      <p class="home-kicker">Statistics · Causal inference · Machine learning</p>
+      <h1>{profile.name}</h1>
+      <p class="home-lead">I’m a {profile.affiliation}.</p>
+      <p>{profile.shortBio}</p>
+      <p>My current work spans causal inference, tabular foundation models, Bayesian modeling, and optimal experimental design.</p>
+      <nav class="profile-links" aria-label="Profile links">
+        <a href="/research/">Research & publications</a>
+        <a href="/projects/">Projects & contributions</a>
+        <a href={`mailto:${profile.email}`}>Email</a>
+      </nav>
     </div>
   </section>
 
-  <section class="section section-contrast" aria-labelledby="choose-path-title">
-    <div class="shell">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">Two ways in</p>
-          <h2 id="choose-path-title">Start with what matters to you.</h2>
-        </div>
-        <p>Research visitors can scan methods and publications; hiring teams can move directly to contributions, tools, and applied work.</p>
+  <section class="home-section" aria-labelledby="selected-work-title">
+    <div class="shell reading-column">
+      <header class="home-section-heading">
+        <h2 id="selected-work-title">Selected work</h2>
+        <p>Research and applied projects with a defined role and public evidence.</p>
+      </header>
+      <div class="home-work-list">
+        {featuredProjects.map(({ data }) => (
+          <article class="home-work-item">
+            <div class="home-work-topline">
+              <h3>{data.title}</h3>
+              <span>{formatRange(data.startDate, data.endDate)}</span>
+            </div>
+            <p>{data.summary}</p>
+            <p class="home-work-role"><strong>My role:</strong> {data.role}</p>
+            <p class="home-work-methods">{data.methods.join(' · ')}</p>
+            <div class="text-links" aria-label={`Evidence links for ${data.title}`}>
+              {data.links.map((link) => <a href={link.url}>{link.label}<span aria-hidden="true"> ↗</span></a>)}
+            </div>
+          </article>
+        ))}
       </div>
-      <div class="path-grid">
-        <a class="path-card" href="/research/">
-          <div>
-            <p class="eyebrow">For researchers</p>
-            <h3>Research & publications</h3>
-            <p>Research directions, peer-reviewed work, preprints, and clearly marked publication status.</p>
-          </div>
-          <span>Open research <span aria-hidden="true">→</span></span>
-        </a>
-        <a class="path-card" href="/projects/">
-          <div>
-            <p class="eyebrow">For hiring teams</p>
-            <h3>Projects & contributions</h3>
-            <p>Selected work with individual role, methods, outcomes, and links to papers, code, or official project pages.</p>
-          </div>
-          <span>Open projects <span aria-hidden="true">→</span></span>
-        </a>
-      </div>
+      <p class="section-more"><a href="/projects/">View all project details <span aria-hidden="true">→</span></a></p>
     </div>
   </section>
 
-  <section class="section" aria-labelledby="selected-work-title">
-    <div class="shell">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">Selected work</p>
-          <h2 id="selected-work-title">Methods built for real decisions.</h2>
-        </div>
-        <p>Work across causal estimation, precision medicine, and agricultural experimentation—each with a defined contribution and a primary evidence link.</p>
-      </div>
-      <div class="project-grid">
-        {featuredProjects.map((project, index) => <ProjectCard project={project} index={index + 1} />)}
-      </div>
-    </div>
-  </section>
-
-  <section class="section section-contrast" aria-labelledby="experience-title">
-    <div class="shell">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">Background</p>
-          <h2 id="experience-title">Research depth, applied context.</h2>
-        </div>
-        <p>Current doctoral work combines methodological statistics, machine learning, and collaborative scientific applications.</p>
-      </div>
+  <section class="home-section" aria-labelledby="experience-title">
+    <div class="shell reading-column">
+      <header class="home-section-heading">
+        <h2 id="experience-title">Background</h2>
+        <p>Methodological statistics, machine learning, and applied scientific collaboration.</p>
+      </header>
       <div class="experience-list">
         {experiences.map(({ data }) => (
           <article class="experience-item">
@@ -130,16 +88,13 @@ const formatRange = (startDate: string, endDate: string | null) => {
     </div>
   </section>
 
-  <section class="section" aria-labelledby="skills-title">
-    <div class="shell">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">Technical toolkit</p>
-          <h2 id="skills-title">From theory to reproducible systems.</h2>
-        </div>
-        <p>A research stack spanning statistical methods, modern machine learning, spatial data, and high-performance computing.</p>
-      </div>
-      <div class="skills-grid">
+  <section class="home-section" aria-labelledby="skills-title">
+    <div class="shell reading-column">
+      <header class="home-section-heading">
+        <h2 id="skills-title">Technical toolkit</h2>
+        <p>Tools I use across statistical research, machine learning, and reproducible computing.</p>
+      </header>
+      <div class="home-skills-list">
         {profile.skills.map((group) => (
           <article class="skill-group">
             <h3>{group.label}</h3>
@@ -150,15 +105,13 @@ const formatRange = (startDate: string, endDate: string | null) => {
     </div>
   </section>
 
-  <section class="contact-band" aria-labelledby="contact-title">
-    <div class="shell contact-band-grid">
-      <h2 id="contact-title">Interested in research or applied ML?</h2>
-      <div>
-        <p>I welcome conversations about causal inference, tabular foundation models, and statistically grounded machine learning.</p>
-        <div class="evidence-links">
-          <a href={`mailto:${profile.email}`}>Email me <span aria-hidden="true">→</span></a>
-          {profile.socialLinks.map((link) => <a href={link.url}>{link.label} <span aria-hidden="true">↗</span></a>)}
-        </div>
+  <section class="home-section home-contact" aria-labelledby="contact-title">
+    <div class="shell reading-column">
+      <h2 id="contact-title">Contact</h2>
+      <p>I welcome conversations about causal inference, tabular foundation models, and statistically grounded machine learning.</p>
+      <div class="text-links">
+        <a href={`mailto:${profile.email}`}>{profile.email}</a>
+        {profile.socialLinks.map((link) => <a href={link.url}>{link.label}<span aria-hidden="true"> ↗</span></a>)}
       </div>
     </div>
   </section>
