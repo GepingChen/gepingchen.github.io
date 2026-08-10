@@ -15,23 +15,24 @@ canonicalUrl: null
 draft: false
 englishStanzas:
   - |-
-    Stepping out through the West Gate, Renmin collapses into
-    a small part of the night.
-    Four years we practiced the hard discipline of contemplation,
-    imagining such an island, a page we will never enter again in this life. The maple-leaf bookmark you gave me—
-    whenever I open it, broken leaves fall past my brow.
+    Walk out the West Gate and Renmin collapses
+    into one local patch of the night.
+    We spent four years in ascetic practice, visualizing,
+    until we had imagined this island, this page
+    we will never set foot on again in this life. The maple-leaf bookmark
+    you gave me—open it and broken leaves fall past my brow.
   - |-
-    Then do not wake too easily; do not look too closely
-    at those austere moments inside the clamor. Do not,
-    at the graduation concert, think of certain people. Do not,
-    when packing away old things, put on your glasses.
-    Then you need not see.
+    So don't wake too easily, don't look too closely
+    at the stern moments inside the noise. Don't
+    think of certain people at the graduation concert. Don't
+    put on your glasses when you pack away the old things.
+    Then you won't have to see.
   - |-
-    My last glance cast toward Yishao Pond
-    sinks together with its reflection.
-    Those above the water are as still as the yogi on the bottom.
-    Zhongguancun has burned the earth red.
-    Grief is water striking ground; I am the sound of boiling.
+    The last look I threw toward Yishao Pond
+    goes down together with the look's reflection.
+    The ones on the water, like the yogi settled on the bottom,
+    are calm. Zhongguancun, burning the ground red.
+    Grief is water hitting the ground. I am the sound of boiling.
 chineseStanzas:
   - |-
     从西门走出，人大就坍缩为

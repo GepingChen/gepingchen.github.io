@@ -66,7 +66,7 @@ for (const file of htmlFiles) {
 const bilingualPoems = [
   {
     file: 'blog/poetry/graduation-song/index.html',
-    englishOpening: 'Stepping out through the West Gate',
+    englishOpening: 'Walk out the West Gate',
     chineseOpening: '从西门走出',
   },
   {

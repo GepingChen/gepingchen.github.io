@@ -16,32 +16,31 @@ draft: false
 englishStanzas:
   - |-
     I worship solid things
-    believing God is on the mountain, and so build
-    a house higher than the mountain
+    believe God is on the mountain and so
+    build the house higher than the mountain
   - |-
-    Fresh, I am born within this solidity
-    tamped firm, the back of my head flattened
-    before walls of glass and wood, just as solid
-    I lower my head, sucking coffee, hallucinating almond,
-    floral and fruity notes, a stream crossing the latte-art cup
+    Fresh, I'm born inside this solidity
+    tamped down, flattened at the back of the skull
+    before the wall of glass and wood, equally solid
+    head lowered, sucking at coffee, hallucinating almond,
+    floral and fruity notes, a creek crossing the latte-art cup
   - |-
-    And so I call for typhoons, call for irreversible violence
-    to shake the lakewater in the toilet bowl, uproot from this rhizome
-    the barbs of planets springing up and running wild
+    So I call up typhoons, call up irreversible violence
+    to shake the lake water in the toilet bowl, to tear out of this rhizome
+    the barbs of planets clustered there and running wild
     the corpse of the mountain that bore and raised me
     the first mouthful
     of seawater I choked on learning to swim, held captive
-    in a mug and sealed tight,
-    printed with The Great Wave off Kanagawa
+    in a mug with the lid pressed tight, printed with The Great Wave off Kanagawa
   - |-
-    Fresh, the subtropical high drifts
+    Fresh, the subtropical high roams
     over the white foam of the South China Sea
-    shaking together all things solidly joined
-    like shaking a cup of hot coffee
+    shaking everything solidly joined, all at once
+    the way you shake a cup of hot coffee
     before the same solidity
   - |-
     in the storm brewing beyond the wall of glass and wood
-    the one being shaken, shaking,
+    the shaken one, shaking,
     sees solidity and solidity's reflection
 chineseStanzas:
   - |-
