@@ -30,6 +30,8 @@ const formatRange = (startDate: string, endDate: string | null) => {
 >
   <section class="home-intro">
     <div class="shell reading-column home-intro-grid">
+      <p class="home-kicker">Statistics · Causal inference · Machine learning</p>
+      <h1>{profile.name}</h1>
       <figure class="home-portrait">
         <Image
           src={portraitImage}
@@ -42,9 +44,7 @@ const formatRange = (startDate: string, endDate: string | null) => {
           fetchpriority="high"
         />
       </figure>
-      <div class="home-intro-copy">
-        <p class="home-kicker">Statistics · Causal inference · Machine learning</p>
-        <h1>{profile.name}</h1>
+      <div class="home-intro-details">
         <p class="home-lead">I’m a {profile.affiliation}.</p>
         <p>{profile.shortBio}</p>
         <p>My current work spans causal inference, tabular foundation models, Bayesian modeling, and optimal experimental design.</p>

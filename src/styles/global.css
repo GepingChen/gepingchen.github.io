@@ -181,12 +181,11 @@ ul {
 .home-intro-grid {
   display: grid;
   max-width: 54rem;
-  gap: 1.75rem;
 }
 
 .home-portrait {
-  width: 8.75rem;
-  margin: 0;
+  width: 7.5rem;
+  margin: 0 0 1.5rem;
 }
 
 .home-portrait img {
@@ -196,7 +195,7 @@ ul {
   border: 1px solid var(--color-line);
   border-radius: 0.35rem;
   background: var(--color-surface-muted);
-  box-shadow: 0 1rem 2.5rem rgb(36 35 32 / 12%);
+  box-shadow: 0 0.75rem 2rem rgb(36 35 32 / 8%);
 }
 
 .home-intro p {
@@ -567,19 +566,30 @@ ul {
 @media (min-width: 42rem) {
   .home-intro-grid {
     grid-template-columns: minmax(0, 1fr) clamp(10.5rem, 20vw, 12.5rem);
-    align-items: center;
-    gap: clamp(2.5rem, 6vw, 4rem);
+    column-gap: clamp(2.5rem, 6vw, 4rem);
   }
 
-  .home-intro-copy {
+  .home-intro-grid .home-kicker {
     grid-column: 1;
     grid-row: 1;
   }
 
+  .home-intro-grid > h1 {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .home-intro-details {
+    grid-column: 1;
+    grid-row: 3;
+  }
+
   .home-portrait {
     grid-column: 2;
-    grid-row: 1;
+    grid-row: 1 / 4;
     width: 100%;
+    margin: 0;
+    align-self: center;
     justify-self: end;
   }
 
