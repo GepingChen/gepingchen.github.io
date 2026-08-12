@@ -7,8 +7,8 @@ summary: "Early industry experience in data analysis within financial services."
 highlights: []
 organizationUrl: null
 order: 3
-draft: false
-visibility: "public"
+draft: true
+visibility: "private-draft"
 sources:
   - "private-cv:reviewed-2026-08-09"
 ---

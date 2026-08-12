@@ -5,14 +5,6 @@ import portraitImage from '../assets/profile-portrait.jpg';
 import { profile } from '../data/profile';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const publicProjects = await getCollection(
-  'projects',
-  ({ data }) => !data.draft && data.visibility === 'public',
-);
-const featuredProjects = publicProjects
-  .filter(({ data }) => data.featured)
-  .sort((a, b) => a.data.order - b.data.order);
-
 const experiences = (
   await getCollection('experiences', ({ data }) => !data.draft && data.visibility === 'public')
 ).sort((a, b) => a.data.order - b.data.order);
@@ -47,7 +39,6 @@ const formatRange = (startDate: string, endDate: string | null) => {
       <div class="home-intro-details">
         <p class="home-lead">I’m a {profile.affiliation}.</p>
         <p>{profile.shortBio}</p>
-        <p>My current work spans causal inference, tabular foundation models, Bayesian modeling, and optimal experimental design.</p>
         <nav class="profile-links" aria-label="Profile links">
           <a href="/research/">Research & publications</a>
           <a href="/projects/">Projects & contributions</a>
@@ -57,37 +48,10 @@ const formatRange = (startDate: string, endDate: string | null) => {
     </div>
   </section>
 
-  <section class="home-section" aria-labelledby="selected-work-title">
-    <div class="shell reading-column">
-      <header class="home-section-heading">
-        <h2 id="selected-work-title">Selected work</h2>
-        <p>Research and applied projects with a defined role and public evidence.</p>
-      </header>
-      <div class="home-work-list">
-        {featuredProjects.map(({ data }) => (
-          <article class="home-work-item">
-            <div class="home-work-topline">
-              <h3>{data.title}</h3>
-              <span>{formatRange(data.startDate, data.endDate)}</span>
-            </div>
-            <p>{data.summary}</p>
-            <p class="home-work-role"><strong>My role:</strong> {data.role}</p>
-            <p class="home-work-methods">{data.methods.join(' · ')}</p>
-            <div class="text-links" aria-label={`Evidence links for ${data.title}`}>
-              {data.links.map((link) => <a href={link.url}>{link.label}<span aria-hidden="true"> ↗</span></a>)}
-            </div>
-          </article>
-        ))}
-      </div>
-      <p class="section-more"><a href="/projects/">View all project details <span aria-hidden="true">→</span></a></p>
-    </div>
-  </section>
-
   <section class="home-section" aria-labelledby="experience-title">
     <div class="shell reading-column">
       <header class="home-section-heading">
-        <h2 id="experience-title">Background</h2>
-        <p>Methodological statistics, machine learning, and applied scientific collaboration.</p>
+        <h2 id="experience-title">Education background</h2>
       </header>
       <div class="experience-list">
         {experiences.map(({ data }) => (
@@ -98,23 +62,6 @@ const formatRange = (startDate: string, endDate: string | null) => {
               <p><strong>{data.organization}</strong></p>
               <p>{data.summary}</p>
             </div>
-          </article>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <section class="home-section" aria-labelledby="skills-title">
-    <div class="shell reading-column">
-      <header class="home-section-heading">
-        <h2 id="skills-title">Technical toolkit</h2>
-        <p>Tools I use across statistical research, machine learning, and reproducible computing.</p>
-      </header>
-      <div class="home-skills-list">
-        {profile.skills.map((group) => (
-          <article class="skill-group">
-            <h3>{group.label}</h3>
-            <p>{group.items.join(' · ')}</p>
           </article>
         ))}
       </div>

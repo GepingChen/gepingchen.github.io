@@ -1,7 +1,7 @@
 # 项目简报与决策记录
 
 状态：首版已实现并发布到 GitHub Pages
-最后更新：2026-08-10
+最后更新：2026-08-11
 
 这个文件记录会影响实现方向的产品决定。专业邮箱、GitHub、LinkedIn、公开仓库和首页头像已经确认；Google Scholar / ORCID 和未发表项目公开范围仍待确认。
 
@@ -15,21 +15,21 @@
 
 希望在很短时间内确认：你是谁、擅长什么、做过什么、个人贡献和结果是什么、如何联系你。
 
-建议路径：Home → Featured Projects → Experience Highlights → Contact。
+建议路径：Home → Projects → Education background → Contact。
 
 ### 学术访客 / Collaborator
 
 希望快速确认：研究方向、代表论文或研究项目、当前身份、精选背景和联系方式。
 
-建议路径：Home → Research/Publications → Background → Contact。
+建议路径：Home → Research/Publications → Education background → Contact。
 
 ## MVP 范围
 
 包括：
 
-- 首页定位、双路径入口、短简介、精选成果、简要经历和联系方式。
+- 首页定位、双路径入口、短简介、代表工作概述、教育背景和联系方式。
 - Research/Publications、Projects。
-- 必要的 Experience、Awards、Talks 内容板块。
+- 本科与 PhD 教育经历。
 - 移动端、键盘操作、基础无障碍、SEO、社交分享预览和 404 页面。
 - 内容与页面布局分离，便于持续维护。
 
@@ -49,8 +49,8 @@
 | 阻塞 | 技术栈 | Astro + TypeScript + Markdown/MDX | 已确定 | 影响目录、内容集合和构建命令 |
 | 阻塞 | 部署平台 | GitHub Pages 用户站点；源码和发布流程保持在同一 GitHub 仓库 | 已确定：通过 GitHub Actions 静态部署到 GitHub Pages | 影响仓库命名、Actions 和 URL 配置 |
 | 阻塞 | 首版域名 | 使用 GitHub Pages 用户站点地址，未来可绑定自有姓名域名 | 已确定：`https://gepingchen.github.io` | 影响仓库名、canonical URL 和长期品牌 |
-| 高 | 首页首要受众 | 两类并重，但只设一个主标题 | 已确定：研究身份优先，项目与技能便于招聘者扫描 | 避免首页信息竞争 |
-| 高 | 精选成果 | 3–5 个有强证据和明确个人贡献的项目/论文 | 计划默认：TabCF、Tabular FM Pretraining、Iowa Nitrogen Initiative | 决定 MVP 内容量和视觉重点 |
+| 高 | 首页首要受众 | 两类并重，但只设一个主标题 | 已确定：研究身份优先，项目与方法便于招聘者扫描 | 避免首页信息竞争 |
+| 高 | 代表工作 | 首页个人陈述用几句话概括，完整证据与贡献放在 Projects / Research | 已确定：首页不设 Selected work 板块 | 保持首页简短，同时保留可核验详情入口 |
 | 高 | CV 公开方式 | 只展示筛选后的网页内容 | 已确定：CV 仅作为内部内容来源；无 PDF 下载、无独立 CV 路由 | 保护完整履历文件，同时保留必要事实 |
 | 高 | 联系方式 | 专业邮箱 + GitHub + LinkedIn/Google Scholar（按实际） | 专业邮箱可公开；其他资料链接待确认；不展示电话 | 影响隐私和转化路径 |
 | 中 | 视觉风格 | 简洁、研究型、文字优先、克制动效 | 已确定：modern academic minimal，浅色、低饱和蓝绿色点缀 | 影响设计系统与素材需求 |
@@ -82,12 +82,12 @@ Astro 保持默认静态输出，不添加服务端 adapter；只有未来确实
 
 ## 建议的信息架构
 
-- `/`：定位、短简介、双路径入口、三项精选成果、技能/经历摘要、联系方式。
+- `/`：定位、短简介与代表工作概述、双路径入口、本科与 PhD 教育背景、联系方式。
 - `/research/`：研究方向、论文和研究项目。
 - `/projects/`：TabCF、tabular FM pretraining、Iowa Nitrogen Initiative 和 UHI 等项目；首版可使用列表而不创建每项详情页。
 - `/blog/poetry/`：公开诗歌索引；每首诗使用独立静态页面。
 
-About、Experience 和 Contact 合并进首页。CV 只作为私有来源，不复制进公开目录，也不创建 `/cv/`。除 Poetry 外，`/writing/` 相关类型只保留未来内容模型，不创建空路由。
+About、Education background 和 Contact 合并进首页；不设独立 Selected work 或 Technical toolkit 板块。CV 只作为私有来源，不复制进公开目录，也不创建 `/cv/`。除 Poetry 外，`/writing/` 相关类型只保留未来内容模型，不创建空路由。
 
 ## 发布验收问题
 

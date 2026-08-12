@@ -7,8 +7,8 @@ summary: "Developing Bayesian modeling, APSIM calibration, uncertainty quantific
 highlights: []
 organizationUrl: "https://www.cssm.iastate.edu/project/iowa-nitrogen-initiative"
 order: 2
-draft: false
-visibility: "public"
+draft: true
+visibility: "private-draft"
 sources:
   - "https://www.cssm.iastate.edu/project/iowa-nitrogen-initiative"
   - "private-cv:reviewed-2026-08-09"

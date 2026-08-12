@@ -208,8 +208,6 @@ ul {
 .eyebrow,
 .project-meta,
 .publication-topline,
-.home-work-topline span,
-.home-work-methods,
 .experience-date {
   color: var(--color-muted);
   font-family: var(--font-sans);
@@ -262,35 +260,6 @@ ul {
   color: var(--color-muted);
 }
 
-.home-work-list {
-  border-bottom: 1px solid var(--color-line);
-}
-
-.home-work-item {
-  padding-block: 1.8rem;
-  border-top: 1px solid var(--color-line);
-}
-
-.home-work-topline {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 1rem;
-}
-
-.home-work-topline h3 {
-  margin-bottom: 0.65rem;
-}
-
-.home-work-item p {
-  margin-bottom: 0.65rem;
-}
-
-.home-work-role {
-  color: var(--color-ink);
-}
-
-.home-work-role strong,
 .project-role strong,
 .publication-contribution strong {
   color: var(--color-accent-deep);
@@ -299,12 +268,6 @@ ul {
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-}
-
-.home-work-methods {
-  margin-block: 1rem !important;
-  line-height: 1.6;
-  text-transform: none;
 }
 
 .text-links,
@@ -319,13 +282,6 @@ ul {
   display: inline-flex;
   min-height: 2.5rem;
   align-items: center;
-}
-
-.section-more {
-  margin: 1.4rem 0 0;
-  font-family: var(--font-sans);
-  font-size: 0.9rem;
-  font-weight: 650;
 }
 
 .experience-list,
@@ -356,22 +312,10 @@ ul {
   color: var(--color-muted);
 }
 
-.home-skills-list {
-  display: grid;
-  border-bottom: 1px solid var(--color-line);
-}
-
-.skill-group {
-  padding-block: 1.35rem;
-  border-top: 1px solid var(--color-line);
-}
-
-.skill-group h3,
 .interest-card h3 {
   font-size: 1rem;
 }
 
-.skill-group p,
 .interest-card p {
   margin-bottom: 0;
   color: var(--color-muted);
@@ -598,20 +542,17 @@ ul {
     gap: 1.75rem;
   }
 
-  .home-skills-list,
   .interest-grid,
   .skills-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .home-skills-list > :nth-child(even),
   .interest-grid > :nth-child(even),
   .skills-grid > :nth-child(even) {
     padding-left: 1.5rem;
     border-left: 1px solid var(--color-line);
   }
 
-  .home-skills-list > :nth-child(odd),
   .interest-grid > :nth-child(odd),
   .skills-grid > :nth-child(odd) {
     padding-right: 1.5rem;
@@ -657,12 +598,6 @@ ul {
   .home-section,
   .section {
     padding-block: 3.25rem;
-  }
-
-  .home-work-topline {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 0;
   }
 
   .footer-inner {

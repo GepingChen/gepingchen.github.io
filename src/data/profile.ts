@@ -3,7 +3,7 @@ export const profile = {
   initials: 'GC',
   headline: 'Statistics PhD Candidate working on causal inference and tabular foundation models.',
   shortBio:
-    'I develop statistical and machine-learning methods for causal inference and tabular data, with applications in precision medicine, agriculture, and remote sensing.',
+    'I develop statistical and machine-learning methods for causal inference and tabular data. My recent work includes TabCF for distributional causal estimation, individualized combination-treatment rules, and Bayesian modeling and experimental design for agricultural studies.',
   affiliation: 'PhD Candidate in Statistics at Iowa State University',
   email: 'gepingc@iastate.edu',
   socialLinks: [
@@ -31,12 +31,6 @@ export const profile = {
       title: 'Experimental design',
       description: 'Optimal and robust designs that connect statistical efficiency with field constraints.',
     },
-  ],
-  skills: [
-    { label: 'Programming', items: ['Python', 'R', 'SQL', 'C/C++'] },
-    { label: 'ML & statistics', items: ['PyTorch', 'scikit-learn', 'Causal inference', 'Bayesian modeling'] },
-    { label: 'Research systems', items: ['Linux', 'HPC', 'Git', 'AWS', 'Jupyter'] },
-    { label: 'Spatial data', items: ['ArcGIS Pro', 'ArcPy', 'Google Earth Engine', 'Raster processing'] },
   ],
   sources: ['private-cv:reviewed-2026-08-09'],
 } as const;
