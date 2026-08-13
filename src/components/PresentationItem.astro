@@ -1,0 +1,30 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  presentation: CollectionEntry<'presentations'>;
+}
+
+const { presentation } = Astro.props;
+const { data } = presentation;
+---
+
+<article class="presentation-item">
+  <p class="presentation-date"><time datetime={data.date}>{data.displayDate}</time></p>
+  <div class="presentation-body">
+    <p class="presentation-topline">
+      <span>{data.format}</span>
+      {data.title && (
+        <>
+          <span aria-hidden="true">·</span>
+          {data.url ? <a href={data.url}>{data.event}</a> : <span>{data.event}</span>}
+        </>
+      )}
+    </p>
+    <h3>
+      {data.title ?? (data.url ? <a href={data.url}>{data.event}</a> : data.event)}
+    </h3>
+    {data.detail && <p>{data.detail}</p>}
+    {data.location && <p class="presentation-location">{data.location}</p>}
+  </div>
+</article>

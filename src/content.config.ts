@@ -85,6 +85,21 @@ const experiences = defineCollection({
   }),
 });
 
+const presentations = defineCollection({
+  loader: glob({ base: './src/content/presentations', pattern: '**/*.{md,mdx}' }),
+  schema: z.object({
+    event: z.string().min(1),
+    title: z.string().min(1).nullable().default(null),
+    format: z.enum(['Invited seminar', 'Invited presentation', 'Poster presentation']),
+    date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+    displayDate: z.string().min(1),
+    location: z.string().min(1).nullable().default(null),
+    detail: z.string().min(1).nullable().default(null),
+    url: z.url().nullable().default(null),
+    ...editorialFields,
+  }),
+});
+
 const poetry = defineCollection({
   loader: glob({ base: './src/content/poetry', pattern: '**/*.{md,mdx}' }),
   schema: futurePostSchema.omit({ language: true, title: true }).extend({
@@ -108,4 +123,4 @@ const poetry = defineCollection({
   }),
 });
 
-export const collections = { projects, publications, experiences, poetry };
+export const collections = { projects, publications, experiences, presentations, poetry };

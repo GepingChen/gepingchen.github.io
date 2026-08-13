@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import PresentationItem from '../components/PresentationItem.astro';
 import PublicationItem from '../components/PublicationItem.astro';
 import { profile } from '../data/profile';
 import BaseLayout from '../layouts/BaseLayout.astro';
@@ -7,11 +8,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 const publications = (
   await getCollection('publications', ({ data }) => !data.draft && data.visibility === 'public')
 ).sort((a, b) => a.data.order - b.data.order);
+
+const presentations = (
+  await getCollection('presentations', ({ data }) => !data.draft && data.visibility === 'public')
+).sort((a, b) => a.data.order - b.data.order);
 ---
 
 <BaseLayout
   title="Research — Geping Chen"
-  description="Research interests and publications by Geping Chen in causal inference, tabular foundation models, precision medicine, agricultural statistics, and experimental design."
+  description="Research interests, presentations, and publications by Geping Chen in causal inference, tabular foundation models, precision medicine, agricultural statistics, and experimental design."
 >
   <header class="page-hero">
     <div class="shell reading-column">
@@ -41,7 +46,22 @@ const publications = (
     </div>
   </section>
 
-  <section class="section section-contrast" aria-labelledby="publications-title">
+  <section class="section section-contrast" aria-labelledby="presentations-title">
+    <div class="shell reading-column">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Talks & conferences</p>
+          <h2 id="presentations-title">Recent & upcoming presentations.</h2>
+        </div>
+        <p>Invited seminars, conference presentations, and posters on current research.</p>
+      </div>
+      <div class="presentation-list">
+        {presentations.map((presentation) => <PresentationItem presentation={presentation} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="publications-title">
     <div class="shell reading-column">
       <div class="section-heading">
         <div>

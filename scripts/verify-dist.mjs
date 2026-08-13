@@ -88,6 +88,19 @@ const bilingualPoems = [
   },
 ];
 
+const researchHtml = readFileSync(join(dist, 'research/index.html'), 'utf8');
+const presentationMarkers = [
+  'Recent & upcoming presentations.',
+  'CIMA Lab Seminar',
+  'Joint Statistical Meetings 2026',
+  '2026 Decision Sciences Institute Annual Conference',
+  'STAI-X 2026',
+];
+
+for (const marker of presentationMarkers) {
+  if (!researchHtml.includes(marker)) failures.push(`Missing presentation content: ${marker}`);
+}
+
 for (const poem of bilingualPoems) {
   const poemHtml = readFileSync(join(dist, poem.file), 'utf8');
   const englishPosition = poemHtml.indexOf(poem.englishOpening);
