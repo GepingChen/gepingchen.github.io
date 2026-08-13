@@ -39,11 +39,6 @@ const formatRange = (startDate: string, endDate: string | null) => {
       <div class="home-intro-details">
         <p class="home-lead">I’m a {profile.affiliation}.</p>
         <p>{profile.shortBio}</p>
-        <p>
-          Outside research, I enjoy <a href="/blog/poetry/">poetry</a>, hiking, and birdwatching,
-          and I like wandering through museums and all the other places filled with “complex
-          boredom.”
-        </p>
         <nav class="profile-links" aria-label="Profile links">
           <a href="/research/">Research & publications</a>
           <a href="/projects/">Projects & contributions</a>
@@ -53,23 +48,31 @@ const formatRange = (startDate: string, endDate: string | null) => {
     </div>
   </section>
 
-  <section class="home-section" aria-labelledby="experience-title">
-    <div class="shell reading-column">
-      <header class="home-section-heading">
-        <h2 id="experience-title">Education background</h2>
-      </header>
-      <div class="experience-list">
-        {experiences.map(({ data }) => (
-          <article class="experience-item">
-            <p class="experience-date">{formatRange(data.startDate, data.endDate)}</p>
-            <div class="experience-body">
-              <h3>{data.role}</h3>
-              <p><strong>{data.organization}</strong></p>
-              <p>{data.summary}</p>
-            </div>
-          </article>
-        ))}
-      </div>
+  <section class="home-section home-details" aria-label="Interests and education">
+    <div class="shell reading-column home-details-grid">
+      <section class="home-details-panel" aria-labelledby="interests-title">
+        <h2 id="interests-title">Interests</h2>
+        <p>
+          Outside research, I enjoy <a href="/blog/poetry/">poetry</a>, hiking, and birdwatching,
+          and I like wandering through museums and all the other places filled with “complex
+          boredom.”
+        </p>
+      </section>
+
+      <section class="home-details-panel" aria-labelledby="education-title">
+        <h2 id="education-title">Education</h2>
+        <div class="home-education-list">
+          {experiences.map(({ data }) => (
+            <article class="home-education-item">
+              <div class="home-education-heading">
+                <h3>{data.role}</h3>
+                <p>{formatRange(data.startDate, data.endDate)}</p>
+              </div>
+              <p>{data.organization}</p>
+            </article>
+          ))}
+        </div>
+      </section>
     </div>
   </section>
 
