@@ -87,13 +87,24 @@ const experiences = defineCollection({
 
 const poetry = defineCollection({
   loader: glob({ base: './src/content/poetry', pattern: '**/*.{md,mdx}' }),
-  schema: futurePostSchema.omit({ language: true }).extend({
+  schema: futurePostSchema.omit({ language: true, title: true }).extend({
+    title: z.string().min(1).nullable().default(null),
     titleZh: z.string().min(1),
     publishedAt: z.coerce.date(),
     displayDate: z.string().min(1),
-    languages: z.tuple([z.literal('en'), z.literal('zh')]),
-    englishStanzas: z.array(z.string().min(1)).min(1),
+    languages: z.union([
+      z.tuple([z.literal('zh')]),
+      z.tuple([z.literal('en'), z.literal('zh')]),
+    ]),
+    englishStanzas: z.array(z.string().min(1)).default([]),
     chineseStanzas: z.array(z.string().min(1)).min(1),
+  }).superRefine((poem, context) => {
+    if (poem.languages[0] === 'en' && (!poem.title || poem.englishStanzas.length === 0)) {
+      context.addIssue({
+        code: 'custom',
+        message: 'English title and stanzas are required when languages includes en.',
+      });
+    }
   }),
 });
 

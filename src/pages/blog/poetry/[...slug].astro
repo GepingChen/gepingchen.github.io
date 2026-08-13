@@ -17,30 +17,36 @@ interface Props {
 }
 
 const { poem } = Astro.props;
+const hasEnglish = poem.data.languages[0] === 'en';
+const pageTitle = poem.data.title ?? poem.data.titleZh;
 ---
 
 <BaseLayout
-  title={`${poem.data.title} — Geping Chen`}
+  title={`${pageTitle} — Geping Chen`}
   description={poem.data.summary}
   currentPath="/blog/poetry/"
-  language="en"
+  language={hasEnglish ? 'en' : 'zh'}
   socialType="article"
 >
   <article class="poem-page">
     <div class="shell poem-column">
       <a class="poem-back" href="/blog/poetry/"><span aria-hidden="true">←</span> Poetry</a>
       <h1>
-        <span>{poem.data.title}</span>
-        <span class="poem-title-zh" lang="zh">{poem.data.titleZh}</span>
+        {hasEnglish && <span>{poem.data.title}</span>}
+        <span class:list={{ 'poem-title-zh': hasEnglish }} lang="zh">{poem.data.titleZh}</span>
       </h1>
       <div class="poem-body">
-        <section lang="en" aria-labelledby="english-translation">
-          <h2 id="english-translation">English translation</h2>
-          {poem.data.englishStanzas.map((stanza) => <p>{stanza}</p>)}
-        </section>
-        <hr aria-hidden="true" />
+        {hasEnglish && (
+          <>
+            <section lang="en" aria-labelledby="english-translation">
+              <h2 id="english-translation">English translation</h2>
+              {poem.data.englishStanzas.map((stanza) => <p>{stanza}</p>)}
+            </section>
+            <hr aria-hidden="true" />
+          </>
+        )}
         <section lang="zh" aria-labelledby="chinese-original">
-          <h2 id="chinese-original">中文原文</h2>
+          <h2 id="chinese-original">{hasEnglish ? '中文原文' : '中文'}</h2>
           {poem.data.chineseStanzas.map((stanza) => <p>{stanza}</p>)}
         </section>
         <p class="poem-date">

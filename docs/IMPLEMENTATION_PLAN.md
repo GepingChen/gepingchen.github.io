@@ -6,7 +6,7 @@
 
 ## 1. 已确定方向
 
-- 网站语言：英文为主；Poetry 是明确例外，每篇固定展示英文译文与中文原文，英文在前。
+- 网站语言：英文为主；Poetry 是明确例外，可先发布中文原文；提供译文时英文在前、中文在后。
 - 站点定位：研究优先，同时让 data science / ML / statistics 岗位招聘者快速理解能力与贡献。
 - 技术栈：Astro + TypeScript + npm + Markdown/MDX 内容集合。
 - 输出方式：完全静态；不添加 React、Tailwind、CMS、数据库或服务端 adapter。
@@ -14,7 +14,7 @@
 - 导航：Home、Research、Projects、Poetry。
 - About、Education background 和 Contact 合并到 Home；首页不设独立 Selected work 或 Technical toolkit 板块。
 - CV 仅作私有内容来源；不创建 CV 下载、公开 PDF 或独立 `/cv/` 路由。
-- 博客：已按 2026-08-10 的明确请求启用 Poetry 内容集合与 `/blog/poetry/`；Poetry 内容契约要求每篇同时提供英文译文与中文原文，并按英文在前、中文在后的顺序展示；不扩展 RSS、搜索、评论或完整 Writing 系统。
+- 博客：已按 2026-08-10 的明确请求启用 Poetry 内容集合与 `/blog/poetry/`；Poetry 内容契约要求中文原文，英文译文可后续补充；有译文时按英文在前、中文在后的顺序展示；不扩展 RSS、搜索、评论或完整 Writing 系统。
 - 视觉：modern academic minimal；浅色背景、深灰/海军蓝文字、低饱和蓝绿色强调色、少量边框，无复杂动效。
 
 ## 2. CV 推导的英文定位草案

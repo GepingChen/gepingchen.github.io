@@ -20,8 +20,8 @@ const poems = (await getCollection('poetry', ({ data }) => !data.draft)).sort(
         {poems.map((poem) => (
           <li>
             <a href={`/blog/poetry/${poem.id}/`}>
-              <span lang="en">{poem.data.title}</span>
-              <span class="title-separator" aria-hidden="true"> / </span>
+              {poem.data.title && <span lang="en">{poem.data.title}</span>}
+              {poem.data.title && <span class="title-separator" aria-hidden="true"> / </span>}
               <span lang="zh">{poem.data.titleZh}</span>
             </a>
             <time datetime={poem.data.publishedAt.toISOString().slice(0, 10)}>{poem.data.displayDate}</time>

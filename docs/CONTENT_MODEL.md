@@ -17,7 +17,7 @@
 ## Project
 
 ```yaml
-title: "TBD"
+title: null # 英文译名；未翻译时为 null
 slug: "tbd"
 summary: "TBD"
 startDate: "YYYY-MM"
@@ -118,8 +118,8 @@ slug: "tbd"
 summary: "TBD"
 publishedAt: null
 updatedAt: null
-languages: ["en", "zh"]
-englishStanzas: []
+languages: ["zh"] # 有英文译文后改为 ["en", "zh"]
+englishStanzas: [] # 未翻译时允许为空
 chineseStanzas: []
 tags: []
 series: null
@@ -127,7 +127,7 @@ canonicalUrl: null
 draft: true
 ```
 
-Poetry 额外要求 `publishedAt` 非空，并可用 `displayDate` 保存作者指定的页面日期写法；内部排序仍以 ISO 8601 日期为准。`title`、`englishStanzas` 保存英文译文，`titleZh`、`chineseStanzas` 保存中文原文；两种内容都为必填，页面固定英文在前、中文在后。
+Poetry 额外要求 `publishedAt` 非空，并可用 `displayDate` 保存作者指定的页面日期写法；内部排序仍以 ISO 8601 日期为准。`titleZh`、`chineseStanzas` 保存必填的中文原文；`title`、`englishStanzas` 保存可后续补充的英文译文。有英文译文时，页面固定英文在前、中文在后。
 
 ## Site Profile / Global Settings
 
@@ -147,4 +147,4 @@ availableLanguages:
 siteUrl: null
 ```
 
-全站仍以英文为主。Poetry 是双语例外，必须由内容文件显式保存英文译文和中文原文，不在构建时调用机器翻译；新增诗歌缺少任一语言时构建失败。
+全站仍以英文为主。Poetry 是中文内容例外，必须由内容文件显式保存中文原文；英文译文可后续加入，但不在构建时调用机器翻译。标记为含英文的诗歌若缺少英文标题或正文，构建失败。

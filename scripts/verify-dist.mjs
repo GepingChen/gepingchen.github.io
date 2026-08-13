@@ -9,6 +9,8 @@ const requiredFiles = [
   'blog/poetry/index.html',
   'blog/poetry/graduation-song/index.html',
   'blog/poetry/on-solid-things/index.html',
+  'blog/poetry/the-only-way-for-youth-to-last-forever/index.html',
+  'blog/poetry/final-wishes/index.html',
   '404.html',
   'robots.txt',
   'sitemap-index.xml',
@@ -85,6 +87,29 @@ for (const poem of bilingualPoems) {
   if (chinesePosition === -1) failures.push(`Missing Chinese original in ${poem.file}.`);
   if (englishPosition >= chinesePosition) {
     failures.push(`English translation must precede Chinese original in ${poem.file}.`);
+  }
+}
+
+const chineseOnlyPoems = [
+  {
+    file: 'blog/poetry/the-only-way-for-youth-to-last-forever/index.html',
+    title: '青春永久的唯一办法',
+    opening: '黄昏是我一天中视力最差的时候',
+  },
+  {
+    file: 'blog/poetry/final-wishes/index.html',
+    title: '最后的祝愿',
+    opening: '祝愿在凌晨品一的楼道背诵党章的人',
+  },
+];
+
+for (const poem of chineseOnlyPoems) {
+  const poemHtml = readFileSync(join(dist, poem.file), 'utf8');
+
+  if (!poemHtml.includes(poem.title)) failures.push(`Missing Chinese title in ${poem.file}.`);
+  if (!poemHtml.includes(poem.opening)) failures.push(`Missing Chinese poem in ${poem.file}.`);
+  if (poemHtml.includes('English translation')) {
+    failures.push(`Unexpected English translation section in ${poem.file}.`);
   }
 }
 
