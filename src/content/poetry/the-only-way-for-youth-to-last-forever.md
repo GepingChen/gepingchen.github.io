@@ -1,18 +1,52 @@
 ---
-title: null
+title: "The Only Way to Make Youth Permanent"
 titleZh: "青春永久的唯一办法"
 summary: "写于毕业之际，关于离开、衰老，以及把青春寄存在校园的诗。"
 publishedAt: 2023-06-25
 displayDate: "2023.6.25 一勺池"
 updatedAt: null
 languages:
+  - en
   - zh
 tags:
   - poetry
 series: null
 canonicalUrl: "https://mp.weixin.qq.com/s/isUR-mwa8GlU5Ok32T5Vpg"
 draft: false
-englishStanzas: []
+englishStanzas:
+  - |-
+    Dusk is when my eyesight is at its worst
+    dusk is the hour I leave
+    the sun leaves the sky, then the birds leave the branches
+    people queuing at the East Gate, hot and uncomprehending
+    their shadows leaving earlier than their bodies
+  - |-
+    Some leaving is just like some coming in
+    dusk makes it impossible to tell the two apart
+    knowledge is almost identical to aging   but there are always
+    those who long to age   hungover on the lawn by Classroom Building Two
+    one big mouthful of moon and you can pretend you're full
+    tonight we need not toast Dionysus, cups clashing on cups
+    youth ringing and clinking in the water
+  - |-
+    Now, as one more part of that enormous aging
+    statistics has taught me far more confusion than understanding
+    tonight I cannot lift my pen, cannot even recall
+    the mean, the variance, let alone the moment-generating function
+    tonight, facing the Seek Truth from Facts stone, I cannot say
+    one word of repentance—tonight I stand
+    before Yishao Pond   at the most bewildered center of all the flames
+    I cut across the front of everyone's graduation photographs
+    and in everyone's light and shadow I leave my youth in storage
+  - |-
+    Renmin University of China, on June 26, 2023,
+    removes certain grief-heavy people, and is light again
+    this is her only way to make youth permanent
+    I am her traitor, her preacher,
+    the restless one who wanders three inches of field
+    she and I have looked at each other four years; this is the last look
+    Mercy, she grants me exile
+    this is my only way to make youth permanent
 chineseStanzas:
   - |-
     黄昏是我一天中视力最差的时候

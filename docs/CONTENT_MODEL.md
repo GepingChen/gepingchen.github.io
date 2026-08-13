@@ -17,7 +17,7 @@
 ## Project
 
 ```yaml
-title: null # 英文译名；未翻译时为 null
+title: "TBD"
 slug: "tbd"
 summary: "TBD"
 startDate: "YYYY-MM"
@@ -112,7 +112,7 @@ sources: []
 Poetry 已在首篇真实诗歌加入后注册为内容集合。其他文章类型仍只保留模型；没有真实文章时不要生成空文章或公开 Writing 导航。
 
 ```yaml
-title: "TBD"
+title: null # 英文译名；未翻译时为 null
 titleZh: "TBD"
 slug: "tbd"
 summary: "TBD"
