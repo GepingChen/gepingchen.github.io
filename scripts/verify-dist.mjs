@@ -90,7 +90,7 @@ const bilingualPoems = [
 
 const researchHtml = readFileSync(join(dist, 'research/index.html'), 'utf8');
 const presentationMarkers = [
-  'Recent & upcoming presentations.',
+  '<h2 id="presentations-title">News</h2>',
   'CIMA Lab Seminar',
   'Joint Statistical Meetings 2026',
   '2026 Decision Sciences Institute Annual Conference',
