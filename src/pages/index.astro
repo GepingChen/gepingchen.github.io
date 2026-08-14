@@ -39,6 +39,11 @@ const formatRange = (startDate: string, endDate: string | null) => {
       <div class="home-intro-details">
         <p class="home-lead">I’m a {profile.affiliation}.</p>
         <p>{profile.shortBio}</p>
+        <p>
+          Outside research, I enjoy <a href="/blog/poetry/">poetry</a>, hiking, and birdwatching,
+          and I like wandering through museums and all the other places filled with “complex
+          boredom.”
+        </p>
         <nav class="profile-links" aria-label="Profile links">
           <a href="/research/">Research & publications</a>
           <a href="/projects/">Projects & contributions</a>
@@ -46,17 +51,15 @@ const formatRange = (startDate: string, endDate: string | null) => {
         </nav>
       </div>
     </div>
-  </section>
 
-  <section class="home-section home-details" aria-label="Interests and education">
-    <div class="shell reading-column home-details-grid">
+    <div class="shell reading-column home-details-grid" aria-label="Interests and education">
       <section class="home-details-panel" aria-labelledby="interests-title">
         <h2 id="interests-title">Interests</h2>
-        <p>
-          Outside research, I enjoy <a href="/blog/poetry/">poetry</a>, hiking, and birdwatching,
-          and I like wandering through museums and all the other places filled with “complex
-          boredom.”
-        </p>
+        <ul class="home-interests-list">
+          <li>Tabular foundation model</li>
+          <li>Causal inference</li>
+          <li>Causal discovery</li>
+        </ul>
       </section>
 
       <section class="home-details-panel" aria-labelledby="education-title">
