@@ -218,11 +218,6 @@ ul {
   text-transform: uppercase;
 }
 
-.home-lead {
-  color: var(--color-ink);
-  font-size: clamp(1.25rem, 2.6vw, 1.55rem) !important;
-}
-
 .profile-links,
 .text-links,
 .evidence-links,

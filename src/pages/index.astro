@@ -18,7 +18,7 @@ const formatRange = (startDate: string, endDate: string | null) => {
 
 <BaseLayout
   title="Geping Chen — Statistics, Causal Inference & Tabular ML"
-  description="Geping Chen is a Statistics PhD Candidate working on causal inference, tabular foundation models, Bayesian modeling, and experimental design."
+  description="Geping Chen is a Statistics PhD Candidate working on AI-enhanced causal inference and the pretraining and post-training of tabular foundation models."
 >
   <section class="home-intro">
     <div class="shell reading-column home-intro-grid">
@@ -36,13 +36,7 @@ const formatRange = (startDate: string, endDate: string | null) => {
         />
       </figure>
       <div class="home-intro-details">
-        <p class="home-lead">I’m a {profile.affiliation}.</p>
-        <p>{profile.shortBio}</p>
-        <p>
-          Outside research, I enjoy <a href="/blog/poetry/">poetry</a>, hiking, and birdwatching,
-          and I like wandering through museums and all the other places filled with “complex
-          boredom.”
-        </p>
+        {profile.introduction.map((paragraph) => <p>{paragraph}</p>)}
         <nav class="profile-links" aria-label="Profile links">
           <a href="/research/">Research & publications</a>
           <a href="/projects/">Projects & contributions</a>
@@ -55,9 +49,9 @@ const formatRange = (startDate: string, endDate: string | null) => {
       <section class="home-details-panel" aria-labelledby="interests-title">
         <h2 id="interests-title">Interests</h2>
         <ul class="home-interests-list">
-          <li>Tabular foundation model</li>
-          <li>Causal inference</li>
-          <li>Causal discovery</li>
+          <li>AI-enhanced causal inference</li>
+          <li>Tabular foundation model pretraining</li>
+          <li>Tabular foundation model post-training</li>
         </ul>
       </section>
 

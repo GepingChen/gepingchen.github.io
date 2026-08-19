@@ -1,10 +1,12 @@
 export const profile = {
   name: 'Geping Chen',
   initials: 'GC',
-  headline: 'Statistics PhD Candidate working on causal inference and tabular foundation models.',
-  shortBio:
-    'I develop statistical and machine-learning methods for causal inference and tabular data. My recent work includes TabCF for distributional causal estimation, individualized combination-treatment rules, and Bayesian modeling and experimental design for agricultural studies.',
-  affiliation: 'PhD Candidate in Statistics at Iowa State University',
+  headline: 'Statistics PhD Candidate working on AI-enhanced causal inference and tabular foundation models.',
+  introduction: [
+    'I’m a PhD Candidate in Statistics at Iowa State University, under the supervision of Dr. Chunlin Li and Dr. Zhengyuan Zhu.',
+    'My research interests are AI-enhanced causal inference and the pretraining and post-training of tabular foundation models.',
+    'Before that, I completed my bachelor’s degree in Statistics at Renmin University of China under the supervision of Dr. Hanfang Yang and Dr. Annie Qu.',
+  ],
   email: 'gepingc@iastate.edu',
   socialLinks: [
     { label: 'GitHub', url: 'https://github.com/GepingChen' },
