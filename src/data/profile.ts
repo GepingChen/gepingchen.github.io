@@ -2,10 +2,16 @@ export const profile = {
   name: 'Geping Chen',
   initials: 'GC',
   headline: 'Statistics PhD Candidate working on AI-enhanced causal inference and tabular foundation models.',
-  introduction: [
-    'I’m a PhD Candidate in Statistics at Iowa State University, under the supervision of Dr. Chunlin Li and Dr. Zhengyuan Zhu.',
-    'My research interests are AI-enhanced causal inference and the pretraining and post-training of tabular foundation models.',
-    'Before that, I completed my bachelor’s degree in Statistics at Renmin University of China under the supervision of Dr. Hanfang Yang and Dr. Annie Qu.',
+  doctoralAdvisors: [
+    { name: 'Dr. Chunlin Li', url: 'https://www.stat.iastate.edu/people/chunlin-li' },
+    { name: 'Dr. Zhengyuan Zhu', url: 'https://www.stat.iastate.edu/people/zhengyuan-zhu' },
+  ],
+  undergraduateAdvisors: [
+    {
+      name: 'Dr. Hanfang Yang',
+      url: 'https://stat.ruc.edu.cn/EN/DepartmentFaulty/Department_of_Economic_and_Social_Statistics/cf0742addfd4451db91665797304d5b8.htm',
+    },
+    { name: 'Dr. Annie Qu', url: 'https://qu.pstat.ucsb.edu/' },
   ],
   email: 'gepingc@iastate.edu',
   socialLinks: [

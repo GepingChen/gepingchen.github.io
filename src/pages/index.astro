@@ -1,19 +1,8 @@
 ---
-import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
 import portraitImage from '../assets/profile-portrait.jpg';
 import { profile } from '../data/profile';
 import BaseLayout from '../layouts/BaseLayout.astro';
-
-const experiences = (
-  await getCollection('experiences', ({ data }) => !data.draft && data.visibility === 'public')
-).sort((a, b) => a.data.order - b.data.order);
-
-const formatRange = (startDate: string, endDate: string | null) => {
-  const start = startDate.slice(0, 4);
-  const end = endDate ? endDate.slice(0, 4) : 'present';
-  return start === end ? start : `${start}–${end}`;
-};
 ---
 
 <BaseLayout
@@ -36,39 +25,29 @@ const formatRange = (startDate: string, endDate: string | null) => {
         />
       </figure>
       <div class="home-intro-details">
-        {profile.introduction.map((paragraph) => <p>{paragraph}</p>)}
+        <p>
+          I’m a PhD Candidate in Statistics at Iowa State University, under the supervision of{' '}
+          <a href={profile.doctoralAdvisors[0].url}>{profile.doctoralAdvisors[0].name}</a>{' '}
+          and{' '}
+          <a href={profile.doctoralAdvisors[1].url}>{profile.doctoralAdvisors[1].name}</a>.
+        </p>
+        <p>
+          My research interests are AI-enhanced causal inference and the pretraining and
+          post-training of tabular foundation models.
+        </p>
+        <p>
+          Before that, I completed my bachelor’s degree in Statistics at Renmin University of China
+          under the supervision of{' '}
+          <a href={profile.undergraduateAdvisors[0].url}>{profile.undergraduateAdvisors[0].name}</a>{' '}
+          and{' '}
+          <a href={profile.undergraduateAdvisors[1].url}>{profile.undergraduateAdvisors[1].name}</a>.
+        </p>
         <nav class="profile-links" aria-label="Profile links">
           <a href="/research/">Research & publications</a>
           <a href="/projects/">Projects & contributions</a>
           <a href={`mailto:${profile.email}`}>Email</a>
         </nav>
       </div>
-    </div>
-
-    <div class="shell reading-column home-details-grid" aria-label="Interests and education">
-      <section class="home-details-panel" aria-labelledby="interests-title">
-        <h2 id="interests-title">Interests</h2>
-        <ul class="home-interests-list">
-          <li>AI-enhanced causal inference</li>
-          <li>Tabular foundation model pretraining</li>
-          <li>Tabular foundation model post-training</li>
-        </ul>
-      </section>
-
-      <section class="home-details-panel" aria-labelledby="education-title">
-        <h2 id="education-title">Education</h2>
-        <div class="home-education-list">
-          {experiences.map(({ data }) => (
-            <article class="home-education-item">
-              <div class="home-education-heading">
-                <h3>{data.role}</h3>
-                <p>{formatRange(data.startDate, data.endDate)}</p>
-              </div>
-              <p>{data.organization}</p>
-            </article>
-          ))}
-        </div>
-      </section>
     </div>
   </section>
 

@@ -15,19 +15,19 @@
 
 希望在很短时间内确认：你是谁、擅长什么、做过什么、个人贡献和结果是什么、如何联系你。
 
-建议路径：Home → Projects → Education background → Contact。
+建议路径：Home → Projects → Contact。
 
 ### 学术访客 / Collaborator
 
 希望快速确认：研究方向、代表论文或研究项目、当前身份、精选背景和联系方式。
 
-建议路径：Home → Research/Publications → Education background → Contact。
+建议路径：Home → Research/Publications → Contact。
 
 ## MVP 范围
 
 包括：
 
-- 首页定位、双路径入口、短简介、代表工作概述、归入个人陈述区域的兴趣与教育背景，以及联系方式。
+- 首页定位、双路径入口、包含当前身份、研究兴趣与教育背景的短简介，以及联系方式。
 - Research/Publications、Projects。
 - 本科与 PhD 教育经历。
 - 移动端、键盘操作、基础无障碍、SEO、社交分享预览和 404 页面。
@@ -82,12 +82,12 @@ Astro 保持默认静态输出，不添加服务端 adapter；只有未来确实
 
 ## 建议的信息架构
 
-- `/`：定位、短简介与代表工作概述、双路径入口、双栏排列的兴趣与本科/PhD 教育背景、联系方式。
+- `/`：定位、包含当前身份、研究兴趣与本科/PhD 背景的三段短简介、双路径入口与联系方式。
 - `/research/`：研究方向、论文和研究项目。
 - `/projects/`：TabCF、tabular FM pretraining、Iowa Nitrogen Initiative 和 UHI 等项目；首版可使用列表而不创建每项详情页。
 - `/blog/poetry/`：公开诗歌索引；每首诗使用独立静态页面。
 
-About、Interests、Education 和 Contact 合并进首页；Interests 与 Education 以响应式双栏直接归入个人陈述区域，不用横线把它们框成独立区块，也不设独立 Selected work 或 Technical toolkit 板块。CV 只作为私有来源，不复制进公开目录，也不创建 `/cv/`。除 Poetry 外，`/writing/` 相关类型只保留未来内容模型，不创建空路由。
+About 的当前身份、研究兴趣和教育背景直接放入首页的三段个人陈述；不设独立 Interests、Education、Selected work 或 Technical toolkit 板块，Contact 保留在首页。CV 只作为私有来源，不复制进公开目录，也不创建 `/cv/`。除 Poetry 外，`/writing/` 相关类型只保留未来内容模型，不创建空路由。
 
 ## 发布验收问题
 

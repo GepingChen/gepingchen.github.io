@@ -12,7 +12,7 @@
 - 输出方式：完全静态；不添加 React、Tailwind、CMS、数据库或服务端 adapter。
 - 部署：通过 GitHub Actions 发布到 GitHub Pages 用户站点 `https://gepingchen.github.io`；仓库为 `GepingChen/gepingchen.github.io`。
 - 导航：Home、Research、Projects、Poetry。
-- About、Interests、Education 和 Contact 合并到 Home；Interests 与 Education 使用响应式双栏并直接归入个人陈述区域，首页不设独立 Selected work 或 Technical toolkit 板块。
+- About 的当前身份、研究兴趣和教育背景以三段个人陈述放在 Home；不设独立 Interests、Education、Selected work 或 Technical toolkit 板块，Contact 保留在 Home。
 - CV 仅作私有内容来源；不创建 CV 下载、公开 PDF 或独立 `/cv/` 路由。
 - 博客：已按 2026-08-10 的明确请求启用 Poetry 内容集合与 `/blog/poetry/`；Poetry 内容契约要求中文原文，英文译文可后续补充；有译文时按英文在前、中文在后的顺序展示；不扩展 RSS、搜索、评论或完整 Writing 系统。
 - 视觉：modern academic minimal；浅色背景、深灰/海军蓝文字、低饱和蓝绿色强调色、少量边框，无复杂动效。
@@ -136,7 +136,7 @@
 
 任务：
 
-- Home：个人陈述、研究/职业双入口、并列的个人兴趣与本科/PhD 教育背景、contact/footer。
+- Home：包含当前身份、研究兴趣与本科/PhD 背景的三段个人陈述、研究/职业双入口、contact/footer。
 - Research：研究兴趣和分状态 publications。
 - Projects：项目列表、个人贡献、方法和证据链接。
 - 建立颜色、字体、间距、内容宽度、边框、focus 和 reduced-motion tokens。
