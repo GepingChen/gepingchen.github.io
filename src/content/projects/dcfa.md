@@ -18,10 +18,8 @@ methods:
 links:
   - label: "Verified replay"
     url: "https://gepingchen.github.io/projects/dcfa/"
-  - label: "Colab notebook"
-    url: "https://colab.research.google.com/github/GepingChen/DCFA/blob/main/notebooks/DCFA_Custom_Analysis_Colab.ipynb"
-  - label: "Code"
-    url: "https://github.com/GepingChen/DCFA"
+  - label: "Verification summary"
+    url: "https://gepingchen.github.io/dcfa/prepared-demo-v1/verification-summary.json"
 tags:
   - "Causal agents"
   - "Tabular foundation models"
@@ -31,7 +29,7 @@ order: 2
 draft: false
 visibility: "public"
 sources:
-  - "https://github.com/GepingChen/DCFA"
+  - "local-source:DCFA"
   - "dcfa-release:87b2b750d1c9a83497f5b16a7b0597758214d20a"
   - "dcfa-prepared-release:sha256:4b686a1ee94b52ef573e84c3d0f71233bba11802604a4787bbbcd2c7d35c50af"
 ---

@@ -153,9 +153,8 @@ const requiredDcfaMarkers = [
   'This replays a previously executed and independently verified workflow. No API call is made.',
   'From the low to the high treatment level, the estimated median outcome increases by 4.47 outcome units.',
   'Residual dependence remains',
-  'Open in Colab',
-  'https://colab.research.google.com/github/GepingChen/DCFA/blob/main/notebooks/DCFA_Custom_Analysis_Colab.ipynb',
-  'https://github.com/GepingChen/DCFA',
+  'Public Colab access pending',
+  'public CTA is intentionally withheld',
 ];
 for (const marker of requiredDcfaMarkers) {
   if (!dcfaHtml.includes(marker)) failures.push(`Missing DCFA public content: ${marker}`);
@@ -170,6 +169,8 @@ const forbiddenDcfaPatterns = [
   /DEVELOPMENT_[A-Z_]+/,
   /website_demo_gemini_v1|tabpfn_client_managed_demo_v2/,
   /api\.priorlabs\.ai/,
+  /colab\.research\.google\.com\/github\/GepingChen\/DCFA/,
+  /github\.com\/GepingChen\/DCFA/,
 ];
 for (const pattern of forbiddenDcfaPatterns) {
   if (pattern.test(dcfaHtml)) failures.push(`Forbidden DCFA public content: ${pattern}`);
