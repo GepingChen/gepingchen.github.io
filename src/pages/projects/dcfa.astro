@@ -6,6 +6,8 @@ import DcfaPreparedDemo from '../../components/DcfaPreparedDemo.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import preparedDemo from '../../data/dcfa/prepared-demo-v1.json';
 
+const colabUrl = 'https://colab.research.google.com/github/GepingChen/DCFA/blob/main/notebooks/DCFA_Custom_Analysis_Colab.ipynb';
+
 for (const asset of Object.values(preparedDemo.assets)) {
   const path = resolve('public', asset.path.replace(/^\//, ''));
   const observed = `sha256:${createHash('sha256').update(readFileSync(path)).digest('hex')}`;
@@ -41,7 +43,7 @@ for (const asset of Object.values(preparedDemo.assets)) {
         <article><h3>Blocked</h3><p>Binary or multi-arm treatment, added covariates, automatic instrument discovery, outside-support requests, provider failures, or evidence mismatches.</p></article>
       </div>
 
-      <DcfaPreparedDemo demo={preparedDemo} />
+      <DcfaPreparedDemo demo={preparedDemo} colabUrl={colabUrl} />
     </div>
   </section>
 
@@ -64,7 +66,7 @@ for (const asset of Object.values(preparedDemo.assets)) {
       <h2 id="limits-title">A released website tool, not a released scientific claim.</h2>
       <div class="limitations">
         <p>The replay is a synthetic, precomputed, development-only demonstration. It makes no API call when opened and does not prove instrument validity, identification, estimator accuracy, or agent superiority.</p>
-        <p>The implemented Colab route executes in the visitor's account. The question is sent to Google and confirmed Y/X/Z rows are sent separately to Prior Labs. Its public CTA is intentionally withheld until the notebook source is anonymously readable and a clean public runtime is verified.</p>
+        <p>The Colab route executes in the visitor's account. The question is sent to Google and confirmed Y/X/Z rows are sent separately to Prior Labs. Users must have permission to share their data and remain responsible for provider terms, quota, charges, and runtime availability.</p>
         <p>Managed-service traceability is not bitwise reproducibility. Locked Track T evidence still requires a fixed real TabPFN checkpoint and runtime image.</p>
       </div>
       <div class="hero-links">

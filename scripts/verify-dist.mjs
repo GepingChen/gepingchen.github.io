@@ -155,6 +155,8 @@ if (verificationSummary.dcfa_release_commit !== preparedData.release.dcfa_commit
 }
 
 const dcfaHtml = readFileSync(join(dist, 'projects/dcfa/index.html'), 'utf8');
+const dcfaColabUrl =
+  'https://colab.research.google.com/github/GepingChen/DCFA/blob/main/notebooks/DCFA_Custom_Analysis_Colab.ipynb';
 const requiredDcfaMarkers = [
   'TabCF-Agent · Auditable causal analysis',
   'TabCF-Agent release',
@@ -162,8 +164,8 @@ const requiredDcfaMarkers = [
   'This replays a previously executed and independently verified workflow. No API call is made.',
   'From the low to the high treatment level, the estimated median outcome increases by 4.47 outcome units.',
   'Residual dependence remains',
-  'Public Colab access pending',
-  'public CTA is intentionally withheld',
+  'Open in Colab',
+  dcfaColabUrl,
 ];
 for (const marker of requiredDcfaMarkers) {
   if (!dcfaHtml.includes(marker)) failures.push(`Missing DCFA public content: ${marker}`);
@@ -178,7 +180,6 @@ const forbiddenDcfaPatterns = [
   /DEVELOPMENT_[A-Z_]+/,
   /website_demo_gemini_v1|tabpfn_client_managed_demo_v2/,
   /api\.priorlabs\.ai/,
-  /colab\.research\.google\.com\/github\/GepingChen\/DCFA/,
   /github\.com\/GepingChen\/DCFA/,
 ];
 for (const pattern of forbiddenDcfaPatterns) {
@@ -186,6 +187,9 @@ for (const pattern of forbiddenDcfaPatterns) {
 }
 
 const projectsHtml = readFileSync(join(dist, 'projects/index.html'), 'utf8');
+if (!projectsHtml.includes(dcfaColabUrl)) {
+  failures.push('TabCF-Agent project card is missing the public Colab CTA.');
+}
 if (projectsHtml.includes('Three evidence-backed projects.')) {
   failures.push('Projects page retains the stale hard-coded project count.');
 }

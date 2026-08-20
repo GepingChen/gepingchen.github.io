@@ -34,9 +34,10 @@ interface PreparedDemo {
 
 interface Props {
   demo: PreparedDemo;
+  colabUrl: string;
 }
 
-const { demo } = Astro.props;
+const { demo, colabUrl } = Astro.props;
 const previewColumns = ['Y', 'X', 'Z'];
 ---
 
@@ -131,7 +132,7 @@ const previewColumns = ['Y', 'X', 'Z'];
       <h3>Run in your own Google Colab runtime.</h3>
       <p>Your question goes to Google Gemini only after confirmation. Your selected Y/X/Z rows go separately to Prior Labs. Your accounts, terms, quota, and charges apply.</p>
     </div>
-    <span class="primary-link primary-link--disabled" aria-disabled="true">Public Colab access pending</span>
+    <a class="primary-link" href={colabUrl}>Open in Colab <span aria-hidden="true">↗</span></a>
   </div>
 </section>
 
@@ -394,14 +395,6 @@ const previewColumns = ['Y', 'X', 'Z'];
 
   .primary-link {
     flex: none;
-  }
-
-  .primary-link--disabled,
-  .primary-link--disabled:hover {
-    border-color: var(--color-line);
-    background: var(--color-surface);
-    color: var(--color-muted);
-    cursor: not-allowed;
   }
 
   @media (min-width: 42rem) {

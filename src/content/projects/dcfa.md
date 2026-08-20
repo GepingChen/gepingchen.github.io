@@ -18,6 +18,8 @@ methods:
 links:
   - label: "Demo"
     url: "https://gepingchen.github.io/projects/dcfa/"
+  - label: "Colab"
+    url: "https://colab.research.google.com/github/GepingChen/DCFA/blob/main/notebooks/DCFA_Custom_Analysis_Colab.ipynb"
 tags:
   - "Causal agents"
   - "Tabular foundation models"
