@@ -57,27 +57,13 @@ const presentations = (
     </div>
   </section>
 
-  <section class="section section-contrast" aria-labelledby="presentations-title">
+  <section class="section section-contrast home-news" aria-labelledby="presentations-title">
     <div class="shell reading-column">
       <div class="section-heading">
-        <div>
-          <h2 id="presentations-title">News</h2>
-        </div>
-        <p>Invited seminars, conference presentations, and posters on current research.</p>
+        <h2 id="presentations-title">News</h2>
       </div>
       <div class="presentation-list">
         {presentations.map((presentation) => <PresentationItem presentation={presentation} />)}
-      </div>
-    </div>
-  </section>
-
-  <section class="home-section home-contact" aria-labelledby="contact-title">
-    <div class="shell reading-column">
-      <h2 id="contact-title">Contact</h2>
-      <p>I welcome conversations about causal inference, tabular foundation models, and statistically grounded machine learning.</p>
-      <div class="text-links">
-        <a href={`mailto:${profile.email}`}>{profile.email}</a>
-        {profile.socialLinks.map((link) => <a href={link.url}>{link.label}<span aria-hidden="true"> ↗</span></a>)}
       </div>
     </div>
   </section>

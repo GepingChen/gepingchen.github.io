@@ -354,10 +354,6 @@ ul {
   color: var(--color-muted);
 }
 
-.home-contact p {
-  max-width: 40rem;
-}
-
 .page-hero {
   padding-block: clamp(3.25rem, 7vw, 5rem);
   border-bottom: 1px solid var(--color-line);
@@ -388,6 +384,22 @@ ul {
 .section-contrast {
   border-block: 1px solid var(--color-line);
   background: var(--color-surface-muted);
+}
+
+.home-news {
+  padding-block: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+.home-news .section-heading {
+  margin-bottom: 0.75rem;
+}
+
+.home-news .section-heading h2 {
+  margin-bottom: 0;
+}
+
+.home-news .presentation-item {
+  padding-block: 1.2rem;
 }
 
 .section-heading {
@@ -631,6 +643,10 @@ ul {
   .home-section,
   .section {
     padding-block: 3.25rem;
+  }
+
+  .home-news {
+    padding-block: 2.5rem;
   }
 
   .footer-inner {
