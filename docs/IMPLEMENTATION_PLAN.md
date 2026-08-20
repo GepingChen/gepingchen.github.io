@@ -4,6 +4,10 @@
 计划日期：2026-08-09
 内容来源：`/Users/chgp/Desktop/intern_cv_26_1.tex`（只读）
 
+2026-08-19 更新：独立 Research 栏目已删除；当前导航为 Home、Projects、Poetry。TabCF
+论文与研究信息统一收拢到第一个 Project，TabCF-Agent 为第二个 Project。下文关于首次发布时
+Research 页面的记录仅保留为历史实施背景。
+
 ## 1. 已确定方向
 
 - 网站语言：英文为主；Poetry 是明确例外，可先发布中文原文；提供译文时英文在前、中文在后。
@@ -11,7 +15,7 @@
 - 技术栈：Astro + TypeScript + npm + Markdown/MDX 内容集合。
 - 输出方式：完全静态；不添加 React、Tailwind、CMS、数据库或服务端 adapter。
 - 部署：通过 GitHub Actions 发布到 GitHub Pages 用户站点 `https://gepingchen.github.io`；仓库为 `GepingChen/gepingchen.github.io`。
-- 导航：Home、Research、Projects、Poetry。
+- 导航：Home、Projects、Poetry。
 - About 的当前身份、研究兴趣和教育背景以三段个人陈述放在 Home；不设独立 Interests、Education、Selected work、Technical toolkit 或 Contact 板块；Home 保留紧凑的 News，联系方式通过个人链接与页脚提供。
 - CV 仅作私有内容来源；不创建 CV 下载、公开 PDF 或独立 `/cv/` 路由。
 - 博客：已按 2026-08-10 的明确请求启用 Poetry 内容集合与 `/blog/poetry/`；Poetry 内容契约要求中文原文，英文译文可后续补充；有译文时按英文在前、中文在后的顺序展示；不扩展 RSS、搜索、评论或完整 Writing 系统。
@@ -46,12 +50,12 @@
 
 ### 首页代表工作概述
 
-首页个人陈述用几句话概括 TabCF、individualized combination-treatment rules，以及 agricultural studies 中的 Bayesian modeling 和 experimental design。完整贡献、方法与证据链接继续保留在 Projects / Research 页面。
+首页个人陈述用几句话概括 TabCF、individualized combination-treatment rules，以及 agricultural studies 中的 Bayesian modeling 和 experimental design。完整贡献、方法与证据链接继续保留在 Projects 页面。
 
-### Research 页面
+### Projects 中的研究与论文信息
 
-- Research interests：Causal Inference、Tabular Foundation Models、Precision Medicine、Agricultural Statistics、Experimental Design。
-- Publications：按 CV 收录的 5 项分组为 Published / Preprint or Under Review / Manuscripts in Preparation。
+- 不再创建独立 Research route；公开研究与论文信息随对应 Project 展示。
+- TabCF 的 preprint、作者贡献和代码链接并入第一个 Project。
 - 论文状态必须在发布当天重新核对；不能把 `under review`、`2026+` 或 manuscript 状态当作永久事实。
 - Manuscripts in preparation 仅在用户确认允许公开后显示。
 
@@ -60,6 +64,7 @@
 首版采用一页式项目列表，不做独立详情页：
 
 - TabCF
+- TabCF-Agent
 - Tabular Foundation Model Pretraining toward Causal Discovery
 - Iowa Nitrogen Initiative
 - Urban Heat Island / Prithvi Foundation Model
@@ -68,7 +73,7 @@
 ### CV 推导的背景内容
 
 - 首页只展示当前身份、本科与 PhD 教育经历。
-- Research 展示经过核对的论文和研究项目。
+- Projects 展示经过核对的论文和研究项目。
 - 不在网页重复完整 CV，不提供文件下载，也不创建名为 CV 的导航入口。
 
 ## 4. CV 来源与隐私规则
@@ -91,7 +96,7 @@
 本站的适配原则：
 
 - 首页先用短篇自我介绍说明身份、研究方向和应用领域，不再使用落地页式超大 hero、装饰图形、悬浮信息卡或双路径卡片。
-- Research 和 Projects 保持一级导航，分别服务学术访客与 data science / machine learning 招聘者。
+- Projects 作为统一的一级导航，同时服务学术访客与 data science / machine learning 招聘者。
 - 首页个人陈述简短概括代表工作；完整贡献、方法和链接继续保留在 Projects 页面。
 - 采用温和的纸张色背景、正文衬线字体、导航与标题无衬线字体和单一低饱和绿色强调色。
 - 首页使用用户于 2026-08-10 明确授权的个人肖像；桌面端保持小尺寸并与文字介绍并排，手机端在研究标签与姓名后展示更小的头像；不使用占位人物图。

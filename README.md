@@ -38,8 +38,7 @@ npm run verify
 ## MVP 页面
 
 - Home
-- Research
-- Projects
+- Projects（包括研究项目、论文与证据链接）
 - Poetry
 
 About 的当前身份、研究兴趣和教育背景以三段简短个人陈述呈现，不另设 Interests、Education、Selected work、Technical toolkit 或 Contact 板块；Home 保留紧凑的 News，联系方式通过首页个人链接与页脚提供。CV 只作为内容来源，不创建下载文件或独立公开路由。Poetry 已因首篇真实内容而公开；其他 Writing/Posts 类型仍只保留内容模型，不创建空页面或主导航入口。

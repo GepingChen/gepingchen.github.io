@@ -25,7 +25,7 @@ tags:
   - "Statistical learning"
   - "Optimization"
 featured: true
-order: 3
+order: 4
 draft: false
 visibility: "public"
 sources:

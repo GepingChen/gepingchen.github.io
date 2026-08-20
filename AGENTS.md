@@ -30,7 +30,7 @@ The user authorized implementation and initial publication on 2026-08-09. On 202
 ## Product Requirements
 
 - Keep two short visitor paths: professional work and academic research.
-- MVP navigation: Home, Research, and Projects.
+- Current navigation: Home, Projects, and Poetry. Research and publication links live under Projects; do not recreate a separate Research route without a new user decision.
 - Keep the short bio, selected experience, and contact links on Home for the compact first release.
 - Keep Writing/Posts out of the primary MVP navigation unless real articles exist.
 - Store repeatable content such as projects, publications, experience, talks, awards, and posts separately from page layout.
@@ -82,7 +82,7 @@ Never fabricate commands in status reports. If the project has no runnable check
 
 - A new visitor can understand the owner's name, role, focus, and strongest proof within roughly 10 seconds.
 - Recruiters can reach selected projects, experience highlights, and contact information within two interactions.
-- Academic visitors can reach research interests, publications, and selected background information within two interactions.
+- Academic visitors can reach research projects, publications, and selected background information through Projects within two interactions.
 - Every featured item has an accurate summary, the owner's contribution, status/date, and relevant evidence links.
 - The site works on phone and desktop layouts without horizontal overflow.
 - Core content and navigation work without client-side JavaScript.

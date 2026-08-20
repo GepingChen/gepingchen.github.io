@@ -5,7 +5,6 @@ import { join, resolve } from 'node:path';
 const dist = resolve('dist');
 const requiredFiles = [
   'index.html',
-  'research/index.html',
   'projects/index.html',
   'projects/dcfa/index.html',
   'dcfa/prepared-demo-v1/prepared-demo.csv',
@@ -48,6 +47,10 @@ for (const file of requiredFiles) {
   if (!existsSync(join(dist, file))) failures.push(`Missing required output: ${file}`);
 }
 
+if (existsSync(join(dist, 'research/index.html'))) {
+  failures.push('The removed Research route is still present in the build.');
+}
+
 const htmlFiles = walk(dist).filter((file) => file.endsWith('.html'));
 
 for (const file of htmlFiles) {
@@ -55,6 +58,10 @@ for (const file of htmlFiles) {
 
   for (const pattern of forbiddenPatterns) {
     if (pattern.test(html)) failures.push(`Forbidden public content in ${file}: ${pattern}`);
+  }
+
+  if (/href=["']\/research\//.test(html)) {
+    failures.push(`Removed Research link remains in ${file}.`);
   }
 
   const references = [...html.matchAll(/(?:href|src)=["']([^"']+)["']/g)].map((match) => match[1]);
@@ -149,6 +156,8 @@ if (verificationSummary.dcfa_release_commit !== preparedData.release.dcfa_commit
 
 const dcfaHtml = readFileSync(join(dist, 'projects/dcfa/index.html'), 'utf8');
 const requiredDcfaMarkers = [
+  'TabCF-Agent · Auditable causal analysis',
+  'TabCF-Agent release',
   'Replay the verified example',
   'This replays a previously executed and independently verified workflow. No API call is made.',
   'From the low to the high treatment level, the estimated median outcome increases by 4.47 outcome units.',
@@ -179,6 +188,16 @@ for (const pattern of forbiddenDcfaPatterns) {
 const projectsHtml = readFileSync(join(dist, 'projects/index.html'), 'utf8');
 if (projectsHtml.includes('Three evidence-backed projects.')) {
   failures.push('Projects page retains the stale hard-coded project count.');
+}
+const tabcfProjectPosition = projectsHtml.indexOf('<h3>TabCF</h3>');
+const tabcfAgentProjectPosition = projectsHtml.indexOf('<h3>TabCF-Agent</h3>');
+if (tabcfProjectPosition === -1 || tabcfAgentProjectPosition === -1) {
+  failures.push('Projects page must contain TabCF and TabCF-Agent.');
+} else if (tabcfProjectPosition >= tabcfAgentProjectPosition) {
+  failures.push('TabCF must be the first project and TabCF-Agent the second.');
+}
+if (projectsHtml.includes('<h3>DCFA</h3>')) {
+  failures.push('The old DCFA project name remains on the Projects page.');
 }
 
 for (const poem of bilingualPoems) {

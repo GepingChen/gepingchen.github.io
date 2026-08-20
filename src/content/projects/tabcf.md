@@ -7,6 +7,7 @@ status: "active"
 kind: "research"
 role: "Lead developer and first author"
 contributions:
+  - "First-authored the 2026 preprint with Chunlin Li, Tianzhong Yang, Zhengyuan Zhu, and Jing Zhou."
   - "Developed the two-stage distributional control-function framework."
   - "Extended estimation from mean effects to quantiles and copula-based multivariate outcomes."
   - "Built the public Python package and reproducible experimental pipelines."

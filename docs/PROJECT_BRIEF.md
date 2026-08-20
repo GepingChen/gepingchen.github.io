@@ -1,7 +1,7 @@
 # 项目简报与决策记录
 
 状态：首版已实现并发布到 GitHub Pages
-最后更新：2026-08-12
+最后更新：2026-08-19
 
 这个文件记录会影响实现方向的产品决定。专业邮箱、GitHub、LinkedIn、公开仓库和首页头像已经确认；Google Scholar / ORCID 和未发表项目公开范围仍待确认。
 
@@ -21,14 +21,14 @@
 
 希望快速确认：研究方向、代表论文或研究项目、当前身份、精选背景和联系方式。
 
-建议路径：Home → Research/Publications → Contact。
+建议路径：Home → Projects → Contact。
 
 ## MVP 范围
 
 包括：
 
 - 首页定位、双路径入口、包含当前身份、研究兴趣与教育背景的短简介，以及紧凑的 News；联系方式通过首页个人链接与页脚提供。
-- Research/Publications、Projects。
+- Projects，集中展示研究项目、论文与工程项目。
 - 本科与 PhD 教育经历。
 - 移动端、键盘操作、基础无障碍、SEO、社交分享预览和 404 页面。
 - 内容与页面布局分离，便于持续维护。
@@ -50,7 +50,7 @@
 | 阻塞 | 部署平台 | GitHub Pages 用户站点；源码和发布流程保持在同一 GitHub 仓库 | 已确定：通过 GitHub Actions 静态部署到 GitHub Pages | 影响仓库命名、Actions 和 URL 配置 |
 | 阻塞 | 首版域名 | 使用 GitHub Pages 用户站点地址，未来可绑定自有姓名域名 | 已确定：`https://gepingchen.github.io` | 影响仓库名、canonical URL 和长期品牌 |
 | 高 | 首页首要受众 | 两类并重，但只设一个主标题 | 已确定：研究身份优先，项目与方法便于招聘者扫描 | 避免首页信息竞争 |
-| 高 | 代表工作 | 首页个人陈述用几句话概括，完整证据与贡献放在 Projects / Research | 已确定：首页不设 Selected work 板块 | 保持首页简短，同时保留可核验详情入口 |
+| 高 | 代表工作 | 首页个人陈述用几句话概括，完整证据与贡献放在 Projects | 已确定：首页不设 Selected work 或独立 Research 板块 | 保持首页简短，同时保留可核验详情入口 |
 | 高 | CV 公开方式 | 只展示筛选后的网页内容 | 已确定：CV 仅作为内部内容来源；无 PDF 下载、无独立 CV 路由 | 保护完整履历文件，同时保留必要事实 |
 | 高 | 联系方式 | 专业邮箱 + GitHub + LinkedIn/Google Scholar（按实际） | 专业邮箱可公开；其他资料链接待确认；不展示电话 | 影响隐私和转化路径 |
 | 中 | 视觉风格 | 简洁、研究型、文字优先、克制动效 | 已确定：modern academic minimal，浅色、低饱和蓝绿色点缀 | 影响设计系统与素材需求 |
@@ -83,8 +83,7 @@ Astro 保持默认静态输出，不添加服务端 adapter；只有未来确实
 ## 建议的信息架构
 
 - `/`：定位、包含当前身份、研究兴趣与本科/PhD 背景的三段短简介、双路径入口与紧凑的 News；联系方式通过个人链接与页脚提供。
-- `/research/`：研究方向与论文。
-- `/projects/`：TabCF、tabular FM pretraining、Iowa Nitrogen Initiative 和 UHI 等项目；首版可使用列表而不创建每项详情页。
+- `/projects/`：统一展示研究、论文与工程项目；TabCF 为第一个项目，TabCF-Agent 为第二个项目。
 - `/blog/poetry/`：公开诗歌索引；每首诗使用独立静态页面。
 
 About 的当前身份、研究兴趣和教育背景直接放入首页的三段个人陈述；不设独立 Interests、Education、Selected work、Technical toolkit 或 Contact 板块。联系方式通过首页个人链接与页脚提供。CV 只作为私有来源，不复制进公开目录，也不创建 `/cv/`。除 Poetry 外，`/writing/` 相关类型只保留未来内容模型，不创建空路由。

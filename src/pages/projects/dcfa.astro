@@ -10,20 +10,20 @@ for (const asset of Object.values(preparedDemo.assets)) {
   const path = resolve('public', asset.path.replace(/^\//, ''));
   const observed = `sha256:${createHash('sha256').update(readFileSync(path)).digest('hex')}`;
   if (observed !== asset.sha256) {
-    throw new Error(`DCFA prepared asset hash mismatch: ${asset.path}`);
+    throw new Error(`TabCF-Agent prepared asset hash mismatch: ${asset.path}`);
   }
 }
 ---
 
 <BaseLayout
-  title="DCFA — Auditable causal analysis agent"
-  description="A static replay and user-owned Colab workflow for DCFA, an auditable agent for bounded continuous-treatment distributional-IV analysis."
+  title="TabCF-Agent — Auditable causal analysis agent"
+  description="A static replay and user-owned Colab workflow for TabCF-Agent, an auditable agent for bounded continuous-treatment distributional-IV analysis."
 >
   <header class="page-hero dcfa-hero">
     <div class="shell reading-column">
-      <p class="eyebrow">DCFA · Auditable causal analysis</p>
+      <p class="eyebrow">TabCF-Agent · Auditable causal analysis</p>
       <h1>From a bounded question to evidence—or a visible stop.</h1>
-      <p class="page-intro">DCFA compiles a narrow natural-language request into a typed specification, delegates numerical work to deterministic tools, blocks unsupported claims, and keeps the displayed answer tied to verified evidence.</p>
+      <p class="page-intro">TabCF-Agent compiles a narrow natural-language request into a typed specification, delegates numerical work to deterministic tools, blocks unsupported claims, and keeps the displayed answer tied to verified evidence.</p>
       <div class="hero-links">
         <a href="#prepared-demo-title">Replay the verified example</a>
         <a href={preparedDemo.assets.verification_summary.path}>Verification summary</a>
@@ -56,7 +56,7 @@ for (const asset of Object.values(preparedDemo.assets)) {
       <ol class="architecture-list">
         <li><strong>Prompt</strong><span>A bounded question names a supported mean or median summary or contrast.</span></li>
         <li><strong>Typed specification</strong><span>Gemini may compile symbolic low, center, and high labels; it receives no data rows or actual intervention values.</span></li>
-        <li><strong>Deterministic tool</strong><span>The DCFA runtime validates roles, diagnostics, support, managed TabPFN output, and the requested estimand.</span></li>
+        <li><strong>Deterministic tool</strong><span>The TabCF-Agent runtime validates roles, diagnostics, support, managed TabPFN output, and the requested estimand.</span></li>
         <li><strong>Evidence or stop</strong><span>A number appears only after evidence validation; unsupported or failed paths return no number.</span></li>
       </ol>
     </div>

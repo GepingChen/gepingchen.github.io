@@ -23,7 +23,7 @@ tags:
   - "Experimental design"
   - "Agriculture"
 featured: true
-order: 2
+order: 3
 draft: false
 visibility: "public"
 sources:
