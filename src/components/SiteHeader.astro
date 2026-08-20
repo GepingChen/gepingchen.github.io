@@ -24,7 +24,11 @@ const isActive = (href: string) =>
       <ul class="nav-list">
         {navigation.map((item) => (
           <li>
-            <a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>
+            <a
+              href={item.href}
+              aria-current={isActive(item.href) ? 'page' : undefined}
+              class={currentPath === '/' && item.href === '/blog/poetry/' ? 'no-hover-underline' : undefined}
+            >
               {item.label}
             </a>
           </li>
