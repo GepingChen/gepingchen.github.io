@@ -88,7 +88,7 @@ const bilingualPoems = [
   },
 ];
 
-const researchHtml = readFileSync(join(dist, 'research/index.html'), 'utf8');
+const homeHtml = readFileSync(join(dist, 'index.html'), 'utf8');
 const presentationMarkers = [
   '<h2 id="presentations-title">News</h2>',
   'CIMA Lab Seminar',
@@ -98,7 +98,7 @@ const presentationMarkers = [
 ];
 
 for (const marker of presentationMarkers) {
-  if (!researchHtml.includes(marker)) failures.push(`Missing presentation content: ${marker}`);
+  if (!homeHtml.includes(marker)) failures.push(`Missing presentation content: ${marker}`);
 }
 
 for (const poem of bilingualPoems) {

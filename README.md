@@ -42,4 +42,4 @@ npm run verify
 - Projects
 - Poetry
 
-About 的当前身份、研究兴趣和教育背景以三段简短个人陈述呈现，不另设 Interests、Education、Selected work 或 Technical toolkit 板块；Contact 保留在 Home。CV 只作为内容来源，不创建下载文件或独立公开路由。Poetry 已因首篇真实内容而公开；其他 Writing/Posts 类型仍只保留内容模型，不创建空页面或主导航入口。
+About 的当前身份、研究兴趣和教育背景以三段简短个人陈述呈现，不另设 Interests、Education、Selected work 或 Technical toolkit 板块；News 与 Contact 保留在 Home。CV 只作为内容来源，不创建下载文件或独立公开路由。Poetry 已因首篇真实内容而公开；其他 Writing/Posts 类型仍只保留内容模型，不创建空页面或主导航入口。
