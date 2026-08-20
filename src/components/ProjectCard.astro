@@ -3,29 +3,16 @@ import type { CollectionEntry } from 'astro:content';
 
 interface Props {
   project: CollectionEntry<'projects'>;
-  index?: number;
 }
 
-const { project, index } = Astro.props;
+const { project } = Astro.props;
 const { data } = project;
-const dateRange = data.endDate
-  ? `${data.startDate.slice(0, 4)}–${data.endDate.slice(0, 4)}`
-  : `${data.startDate.slice(0, 4)}–present`;
 ---
 
 <article class="project-card">
-  <div class="project-meta">
-    {index && <span class="project-number" aria-hidden="true">{String(index).padStart(2, '0')}</span>}
-    <span>{dateRange}</span>
-    <span>{data.status === 'active' ? 'Ongoing' : 'Completed'}</span>
-  </div>
   <h3>{data.title}</h3>
   <p class="project-summary">{data.summary}</p>
-  <p class="project-role"><strong>Role:</strong> {data.role}</p>
-  <ul class="contribution-list">
-    {data.contributions.map((contribution) => <li>{contribution}</li>)}
-  </ul>
-  <ul class="tag-list" aria-label="Methods and topics">
+  <ul class="tag-list" aria-label="Keywords">
     {data.methods.map((method) => <li>{method}</li>)}
   </ul>
   <div class="evidence-links" aria-label={`Evidence links for ${data.title}`}>

@@ -16,10 +16,8 @@ methods:
   - "Evidence provenance"
   - "Static web architecture"
 links:
-  - label: "Verified replay"
+  - label: "Demo"
     url: "https://gepingchen.github.io/projects/dcfa/"
-  - label: "Verification summary"
-    url: "https://gepingchen.github.io/dcfa/prepared-demo-v1/verification-summary.json"
 tags:
   - "Causal agents"
   - "Tabular foundation models"

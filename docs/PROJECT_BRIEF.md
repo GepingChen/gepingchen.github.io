@@ -50,7 +50,7 @@
 | 阻塞 | 部署平台 | GitHub Pages 用户站点；源码和发布流程保持在同一 GitHub 仓库 | 已确定：通过 GitHub Actions 静态部署到 GitHub Pages | 影响仓库命名、Actions 和 URL 配置 |
 | 阻塞 | 首版域名 | 使用 GitHub Pages 用户站点地址，未来可绑定自有姓名域名 | 已确定：`https://gepingchen.github.io` | 影响仓库名、canonical URL 和长期品牌 |
 | 高 | 首页首要受众 | 两类并重，但只设一个主标题 | 已确定：研究身份优先，项目与方法便于招聘者扫描 | 避免首页信息竞争 |
-| 高 | 代表工作 | 首页个人陈述用几句话概括，完整证据与贡献放在 Projects | 已确定：首页不设 Selected work 或独立 Research 板块 | 保持首页简短，同时保留可核验详情入口 |
+| 高 | 代表工作 | 首页个人陈述用几句话概括，Projects 仅保留简短介绍、关键词与主要公开链接 | 已确定：首页不设 Selected work 或独立 Research 板块 | 保持首页与项目页简短，同时保留 preprint、code、demo 等入口 |
 | 高 | CV 公开方式 | 只展示筛选后的网页内容 | 已确定：CV 仅作为内部内容来源；无 PDF 下载、无独立 CV 路由 | 保护完整履历文件，同时保留必要事实 |
 | 高 | 联系方式 | 专业邮箱 + GitHub + LinkedIn/Google Scholar（按实际） | 专业邮箱可公开；其他资料链接待确认；不展示电话 | 影响隐私和转化路径 |
 | 中 | 视觉风格 | 简洁、研究型、文字优先、克制动效 | 已确定：modern academic minimal，浅色、低饱和蓝绿色点缀 | 影响设计系统与素材需求 |

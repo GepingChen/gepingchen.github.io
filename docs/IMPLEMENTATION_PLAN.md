@@ -50,7 +50,7 @@ Research 页面的记录仅保留为历史实施背景。
 
 ### 首页代表工作概述
 
-首页个人陈述用几句话概括 TabCF、individualized combination-treatment rules，以及 agricultural studies 中的 Bayesian modeling 和 experimental design。完整贡献、方法与证据链接继续保留在 Projects 页面。
+首页个人陈述用几句话概括代表性研究方向。Projects 页面仅保留每个精选项目的一两句介绍、关键词，以及 preprint、code、demo 等主要公开入口。
 
 ### Projects 中的研究与论文信息
 
@@ -61,14 +61,10 @@ Research 页面的记录仅保留为历史实施背景。
 
 ### Projects 页面
 
-首版采用一页式项目列表，不做独立详情页：
+当前采用精简项目列表：
 
 - TabCF
 - TabCF-Agent
-- Tabular Foundation Model Pretraining toward Causal Discovery
-- Iowa Nitrogen Initiative
-- Urban Heat Island / Prithvi Foundation Model
-- Confidence-Calibrated Causal Feature Screening（公开范围待确认）
 
 ### CV 推导的背景内容
 
@@ -97,7 +93,7 @@ Research 页面的记录仅保留为历史实施背景。
 
 - 首页先用短篇自我介绍说明身份、研究方向和应用领域，不再使用落地页式超大 hero、装饰图形、悬浮信息卡或双路径卡片。
 - Projects 作为统一的一级导航，同时服务学术访客与 data science / machine learning 招聘者。
-- 首页个人陈述简短概括代表工作；完整贡献、方法和链接继续保留在 Projects 页面。
+- 首页个人陈述简短概括代表工作；Projects 页面仅展示简短介绍、关键词和主要公开链接。
 - 采用温和的纸张色背景、正文衬线字体、导航与标题无衬线字体和单一低饱和绿色强调色。
 - 首页使用用户于 2026-08-10 明确授权的个人肖像；桌面端保持小尺寸并与文字介绍并排，手机端在研究标签与姓名后展示更小的头像；不使用占位人物图。
 - Poetry 因已有真实内容而提供入口；其他 Writing / Posts 类型继续只保留内容模型。
@@ -143,7 +139,7 @@ Research 页面的记录仅保留为历史实施背景。
 
 - Home：包含当前身份、研究兴趣与本科/PhD 背景的三段个人陈述、研究/职业双入口、紧凑的 News，以及个人链接/footer 联系方式。
 - Research：研究兴趣和分状态 publications。
-- Projects：项目列表、个人贡献、方法和证据链接。
+- Projects：精简项目列表，每项保留一两句介绍、关键词和主要公开链接。
 - 建立颜色、字体、间距、内容宽度、边框、focus 和 reduced-motion tokens。
 
 验证：桌面和手机无横向溢出；键盘可达；核心内容关闭 JavaScript 仍可使用；没有空导航或无效按钮。

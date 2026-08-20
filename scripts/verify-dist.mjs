@@ -199,6 +199,26 @@ if (tabcfProjectPosition === -1 || tabcfAgentProjectPosition === -1) {
 if (projectsHtml.includes('<h3>DCFA</h3>')) {
   failures.push('The old DCFA project name remains on the Projects page.');
 }
+const removedProjectMarkers = [
+  'Iowa Nitrogen Initiative',
+  'Individualized Combination Treatment Rules',
+];
+for (const marker of removedProjectMarkers) {
+  if (projectsHtml.includes(marker)) failures.push(`Removed project remains on Projects page: ${marker}`);
+}
+const removedProjectDetailMarkers = [
+  'Ongoing',
+  '<strong>Role:</strong>',
+  'First-authored the 2026 preprint',
+  'Verification summary',
+  'Verified replay',
+];
+for (const marker of removedProjectDetailMarkers) {
+  if (projectsHtml.includes(marker)) failures.push(`Removed project detail remains on Projects page: ${marker}`);
+}
+if (!projectsHtml.includes('>Demo<span aria-hidden="true"> ↗</span></a>')) {
+  failures.push('Projects page is missing the TabCF-Agent Demo link.');
+}
 
 for (const poem of bilingualPoems) {
   const poemHtml = readFileSync(join(dist, poem.file), 'utf8');
