@@ -18,23 +18,33 @@ for (const asset of Object.values(preparedDemo.assets)) {
 ---
 
 <BaseLayout
-  title="TabCF-Agent — Auditable causal analysis agent"
-  description="A static replay and user-owned Colab workflow for TabCF-Agent, an auditable agent for bounded continuous-treatment distributional-IV analysis."
+  title="TabCF-Agent — Causal answers you can audit"
+  description="See how TabCF-Agent turns a supported causal question into a verified answer—or stops when the evidence fails."
 >
   <header class="page-hero dcfa-hero">
     <div class="shell reading-column">
       <p class="eyebrow">TabCF-Agent · Auditable causal analysis</p>
-      <h1>From a bounded question to evidence—or a visible stop.</h1>
-      <p class="page-intro">TabCF-Agent compiles a narrow natural-language request into a typed specification, delegates numerical work to deterministic tools, blocks unsupported claims, and keeps the displayed answer tied to verified evidence.</p>
+      <h1>Ask a causal question. Get an answer you can audit.</h1>
+      <p class="page-intro">TabCF-Agent turns a supported plain-language request and a Y/X/Z dataset into a verified analysis. The language model structures the request; deterministic tools calculate and validate the result. If the checks fail, the agent returns no number.</p>
+      <div class="hero-actions" aria-label="Demo actions">
+        <a class="hero-action-primary" href="#prepared-demo-title">See the verified demo <span aria-hidden="true">↓</span></a>
+        <a href={colabUrl}>Run your own CSV in Colab <span aria-hidden="true">↗</span></a>
+      </div>
     </div>
   </header>
 
-  <section class="section" aria-labelledby="scope-title">
+  <section class="section demo-section" aria-label="Verified TabCF-Agent demo">
+    <div class="shell reading-column">
+      <DcfaPreparedDemo demo={preparedDemo} colabUrl={colabUrl} />
+    </div>
+  </section>
+
+  <section class="section section-contrast" aria-labelledby="scope-title">
     <div class="shell reading-column">
       <div class="section-heading">
         <div>
-          <p class="eyebrow">My contribution</p>
-          <h2 id="scope-title">One causal design, one inspectable workflow.</h2>
+          <p class="eyebrow">What I built</p>
+          <h2 id="scope-title">One focused workflow, with explicit limits.</h2>
         </div>
         <p>I designed and implemented the typed runtime, evidence ledger, support and failure gates, provider boundaries, independent artifact verifier, and the static/Colab release path shown here.</p>
       </div>
@@ -42,28 +52,25 @@ for (const asset of Object.values(preparedDemo.assets)) {
         <article><h3>Supported</h3><p>One continuous outcome Y, one continuous treatment X, one scalar instrument Z, no baseline covariates W, and treatment levels inside empirical support.</p></article>
         <article><h3>Blocked</h3><p>Binary or multi-arm treatment, added covariates, automatic instrument discovery, outside-support requests, provider failures, or evidence mismatches.</p></article>
       </div>
-
-      <DcfaPreparedDemo demo={preparedDemo} colabUrl={colabUrl} />
     </div>
   </section>
 
-  <section class="section section-contrast" aria-labelledby="architecture-title">
+  <section class="section" aria-labelledby="architecture-title">
     <div class="shell reading-column">
       <p class="eyebrow">Architecture</p>
-      <h2 id="architecture-title">The language model never owns the number.</h2>
+      <h2 id="architecture-title">The model interprets the question. Tools own the math.</h2>
       <ol class="architecture-list">
-        <li><strong>Prompt</strong><span>A bounded question names a supported mean or median summary or contrast.</span></li>
-        <li><strong>Typed specification</strong><span>Gemini may compile symbolic low, center, and high labels; it receives no data rows or actual intervention values.</span></li>
-        <li><strong>Deterministic tool</strong><span>The TabCF-Agent runtime validates roles, diagnostics, support, managed TabPFN output, and the requested estimand.</span></li>
-        <li><strong>Evidence or stop</strong><span>A number appears only after evidence validation; unsupported or failed paths return no number.</span></li>
+        <li><strong>Interpret</strong><span>Gemini turns a supported question into a typed specification. It receives no data rows or actual intervention values.</span></li>
+        <li><strong>Calculate</strong><span>The deterministic runtime validates roles and support, runs managed TabPFN, and computes the requested estimand.</span></li>
+        <li><strong>Verify</strong><span>A number appears only after evidence validation. Unsupported or failed paths return no number.</span></li>
       </ol>
     </div>
   </section>
 
-  <section class="section" aria-labelledby="limits-title">
+  <section class="section section-contrast" aria-labelledby="limits-title">
     <div class="shell reading-column">
       <p class="eyebrow">Scope and limitations</p>
-      <h2 id="limits-title">A released website tool, not a released scientific claim.</h2>
+      <h2 id="limits-title">What this demo shows—and what it does not.</h2>
       <div class="limitations">
         <p>The replay is a synthetic, precomputed, development-only demonstration. It makes no API call when opened and does not prove instrument validity, identification, estimator accuracy, or agent superiority.</p>
         <p>The Colab route executes in the visitor's account. The question is sent to Google and confirmed Y/X/Z rows are sent separately to Prior Labs. Users must have permission to share their data and remain responsible for provider terms, quota, charges, and runtime availability.</p>
@@ -78,9 +85,10 @@ for (const asset of Object.values(preparedDemo.assets)) {
 
 <style>
   .dcfa-hero h1 {
-    max-width: 18ch;
+    max-width: 16ch;
   }
 
+  .hero-actions,
   .hero-links {
     display: flex;
     margin-top: 1.6rem;
@@ -91,10 +99,30 @@ for (const asset of Object.values(preparedDemo.assets)) {
     font-weight: 700;
   }
 
+  .hero-actions a,
   .hero-links a {
     display: inline-flex;
     min-height: 2.75rem;
+    padding-inline: 0.9rem;
     align-items: center;
+    gap: 0.35rem;
+    border: 1px solid var(--color-accent-deep);
+    border-radius: 0.25rem;
+    text-decoration: none;
+  }
+
+  .hero-actions .hero-action-primary {
+    background: var(--color-accent-deep);
+    color: white;
+  }
+
+  .hero-actions .hero-action-primary:hover {
+    background: var(--color-accent);
+    color: white;
+  }
+
+  .demo-section {
+    border-bottom: 1px solid var(--color-line);
   }
 
   .scope-grid {
@@ -158,6 +186,17 @@ for (const asset of Object.values(preparedDemo.assets)) {
 
     .architecture-list li {
       grid-template-columns: 10rem 1fr;
+    }
+  }
+
+  @media (max-width: 40rem) {
+    .hero-actions {
+      align-items: stretch;
+      flex-direction: column;
+    }
+
+    .hero-actions a {
+      justify-content: center;
     }
   }
 </style>

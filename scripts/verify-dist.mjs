@@ -160,7 +160,9 @@ const dcfaColabUrl =
 const requiredDcfaMarkers = [
   'TabCF-Agent · Auditable causal analysis',
   'TabCF-Agent release',
-  'Replay the verified example',
+  'Ask a causal question. Get an answer you can audit.',
+  'See one analysis, start to finish.',
+  'Show the verified result',
   'This replays a previously executed and independently verified workflow. No API call is made.',
   'From the low to the high treatment level, the estimated median outcome increases by 4.47 outcome units.',
   'Residual dependence remains',
