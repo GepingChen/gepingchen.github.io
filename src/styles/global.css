@@ -208,6 +208,19 @@ ul {
   font-size: clamp(1.08rem, 2vw, 1.22rem);
 }
 
+.advisor-link {
+  color: inherit;
+  font-weight: inherit;
+  text-decoration: none;
+}
+
+.advisor-link:hover {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--color-muted);
+  text-decoration-thickness: 0.06em;
+}
+
 .eyebrow,
 .project-meta,
 .publication-topline,

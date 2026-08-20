@@ -27,9 +27,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <div class="home-intro-details">
         <p>
           I’m a PhD Candidate in Statistics at Iowa State University, under the supervision of{' '}
-          <a href={profile.doctoralAdvisors[0].url}>{profile.doctoralAdvisors[0].name}</a>{' '}
+          <a class="advisor-link" href={profile.doctoralAdvisors[0].url}>{profile.doctoralAdvisors[0].name}</a>{' '}
           and{' '}
-          <a href={profile.doctoralAdvisors[1].url}>{profile.doctoralAdvisors[1].name}</a>.
+          <a class="advisor-link" href={profile.doctoralAdvisors[1].url}>{profile.doctoralAdvisors[1].name}</a>.
         </p>
         <p>
           My research interests are AI-enhanced causal inference and the pretraining and
@@ -38,9 +38,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <p>
           Before that, I completed my bachelor’s degree in Statistics at Renmin University of China
           under the supervision of{' '}
-          <a href={profile.undergraduateAdvisors[0].url}>{profile.undergraduateAdvisors[0].name}</a>{' '}
+          <a class="advisor-link" href={profile.undergraduateAdvisors[0].url}>{profile.undergraduateAdvisors[0].name}</a>{' '}
           and{' '}
-          <a href={profile.undergraduateAdvisors[1].url}>{profile.undergraduateAdvisors[1].name}</a>.
+          <a class="advisor-link" href={profile.undergraduateAdvisors[1].url}>{profile.undergraduateAdvisors[1].name}</a>.
         </p>
         <nav class="profile-links" aria-label="Profile links">
           <a href="/research/">Research & publications</a>
