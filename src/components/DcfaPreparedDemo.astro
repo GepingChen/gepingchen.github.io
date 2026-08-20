@@ -1,0 +1,420 @@
+---
+interface Warning {
+  title: string;
+  explanation: string;
+  action: string;
+  severity: string;
+}
+
+interface PreparedDemo {
+  prepared_demo_id: string;
+  disclosure: string;
+  question: string;
+  release: { dcfa_commit: string; dcfa_source_sha256: string };
+  release_sha256: string;
+  data: {
+    source: string;
+    row_count: number;
+    roles: Record<string, string>;
+    preview: Array<Record<string, number>>;
+  };
+  stages: Array<{ label: string; status: string }>;
+  result: {
+    answer: string;
+    claim_title: string;
+    value_display: string;
+    units: string;
+    support: { title: string; explanation: string };
+    warnings: Warning[];
+  };
+  development_boundary: string;
+  plot: { file: string; alt: string };
+  assets: Record<string, { path: string; sha256: string }>;
+}
+
+interface Props {
+  demo: PreparedDemo;
+  colabUrl: string;
+}
+
+const { demo, colabUrl } = Astro.props;
+const previewColumns = ['Y', 'X', 'Z'];
+---
+
+<section class="prepared-demo" aria-labelledby="prepared-demo-title">
+  <div class="prepared-heading">
+    <div>
+      <p class="eyebrow">Prepared workflow</p>
+      <h2 id="prepared-demo-title">Replay the verified example.</h2>
+    </div>
+    <p class="release-mark">DCFA release <code>{demo.release.dcfa_commit.slice(0, 12)}</code></p>
+  </div>
+
+  <aside class="replay-disclosure" aria-label="Replay disclosure">
+    <strong>Precomputed replay.</strong> {demo.disclosure}
+  </aside>
+
+  <div class="input-grid">
+    <article class="input-card">
+      <p class="panel-label">Exact question</p>
+      <blockquote>{demo.question}</blockquote>
+      <a href={demo.assets.prepared_prompt.path} download>Download prompt</a>
+    </article>
+    <article class="input-card">
+      <p class="panel-label">Prepared synthetic data</p>
+      <p>{demo.data.row_count} rows · Y outcome · X treatment · Z instrument · no W</p>
+      <a href={demo.assets.prepared_csv.path} download>Download CSV</a>
+    </article>
+  </div>
+
+  <div class="preview-wrap" tabindex="0" role="region" aria-label="Prepared CSV preview">
+    <table>
+      <caption>First five synthetic rows</caption>
+      <thead>
+        <tr>{previewColumns.map((column) => <th scope="col">{column}</th>)}</tr>
+      </thead>
+      <tbody>
+        {demo.data.preview.map((row) => (
+          <tr>{previewColumns.map((column) => <td>{row[column].toFixed(4)}</td>)}</tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <details class="replay-control">
+    <summary>Replay the verified example <span aria-hidden="true">→</span></summary>
+    <div class="replay-content">
+      <ol class="stage-list" aria-label="Previously completed workflow stages">
+        {demo.stages.map((stage, index) => (
+          <li>
+            <span class="stage-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+            <span><strong>{stage.label}</strong><small>{stage.status} before publication</small></span>
+          </li>
+        ))}
+      </ol>
+
+      <article class="result-card" aria-labelledby="prepared-answer-title">
+        <p class="panel-label">Stored verified answer</p>
+        <h3 id="prepared-answer-title">{demo.result.answer}</h3>
+        <div class="result-detail">
+          <div>
+            <strong>{demo.result.support.title}</strong>
+            <p>{demo.result.support.explanation}</p>
+          </div>
+          {demo.result.warnings.map((warning) => (
+            <div class:list={['warning-item', { caution: warning.severity === 'caution' }]}>
+              <strong>{warning.title}</strong>
+              <p>{warning.explanation} {warning.action}</p>
+            </div>
+          ))}
+        </div>
+      </article>
+
+      <figure>
+        <img src={demo.assets.visitor_plot.path} alt={demo.plot.alt} width="1760" height="720" loading="lazy" />
+        <figcaption>The plot and displayed answer were projected from the same validated result bundle.</figcaption>
+      </figure>
+
+      <aside class="boundary-note">
+        <strong>Interpretation boundary.</strong> {demo.development_boundary}
+      </aside>
+
+      <div class="verification-row">
+        <p>Release hash <code>{demo.release_sha256.slice(7, 19)}</code></p>
+        <a href={demo.assets.verification_summary.path}>Inspect verification summary</a>
+      </div>
+    </div>
+  </details>
+
+  <div class="custom-analysis">
+    <div>
+      <p class="panel-label">Use your own bounded CSV</p>
+      <h3>Run in your own Google Colab runtime.</h3>
+      <p>Your question goes to Google Gemini only after confirmation. Your selected Y/X/Z rows go separately to Prior Labs. Your accounts, terms, quota, and charges apply.</p>
+    </div>
+    <a class="primary-link" href={colabUrl}>Open in Colab <span aria-hidden="true">↗</span></a>
+  </div>
+</section>
+
+<style>
+  .prepared-demo {
+    margin-block: clamp(2.5rem, 7vw, 4.5rem);
+  }
+
+  .prepared-heading,
+  .verification-row,
+  .custom-analysis {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 1.25rem;
+  }
+
+  .prepared-heading h2,
+  .prepared-heading p,
+  .verification-row p,
+  .custom-analysis p,
+  .custom-analysis h3 {
+    margin-bottom: 0;
+  }
+
+  .release-mark,
+  .panel-label,
+  .verification-row,
+  .input-card > a,
+  .primary-link {
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    font-weight: 700;
+  }
+
+  code {
+    overflow-wrap: anywhere;
+  }
+
+  .replay-disclosure,
+  .boundary-note {
+    margin-block: 1.25rem;
+    padding: 1rem 1.1rem;
+    border-left: 3px solid var(--color-accent);
+    background: var(--color-surface-muted);
+  }
+
+  .input-grid {
+    display: grid;
+    margin-top: 1.25rem;
+    gap: 1rem;
+  }
+
+  .input-card,
+  .result-card,
+  .custom-analysis {
+    padding: clamp(1.15rem, 3vw, 1.6rem);
+    border: 1px solid var(--color-line);
+    border-radius: 0.35rem;
+    background: var(--color-surface);
+  }
+
+  .panel-label {
+    margin-bottom: 0.45rem;
+    color: var(--color-accent-deep);
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+  }
+
+  blockquote {
+    margin: 0 0 0.8rem;
+    font-size: 1.12rem;
+  }
+
+  .input-card p:not(.panel-label) {
+    margin-bottom: 0.8rem;
+    color: var(--color-muted);
+  }
+
+  .input-card > a,
+  .verification-row > a {
+    display: inline-flex;
+    min-height: 2.5rem;
+    align-items: center;
+  }
+
+  .preview-wrap {
+    overflow-x: auto;
+    margin-block: 1rem;
+    border: 1px solid var(--color-line);
+    border-radius: 0.35rem;
+    background: var(--color-surface);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  caption {
+    padding: 0.8rem;
+    color: var(--color-muted);
+    text-align: left;
+  }
+
+  th,
+  td {
+    padding: 0.55rem 0.8rem;
+    border-top: 1px solid var(--color-line);
+    text-align: right;
+  }
+
+  th {
+    color: var(--color-accent-deep);
+    text-align: right;
+  }
+
+  .replay-control {
+    margin-top: 1.25rem;
+  }
+
+  summary,
+  .primary-link {
+    display: inline-flex;
+    min-height: 2.8rem;
+    padding: 0.72rem 1rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    border: 1px solid var(--color-accent-deep);
+    border-radius: 0.25rem;
+    background: var(--color-accent-deep);
+    color: white;
+    cursor: pointer;
+    font-family: var(--font-sans);
+    font-weight: 700;
+    list-style: none;
+    text-decoration: none;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  summary:hover,
+  .primary-link:hover {
+    background: var(--color-accent);
+    color: white;
+  }
+
+  summary:focus-visible {
+    outline: 3px solid var(--color-focus);
+    outline-offset: 4px;
+  }
+
+  .replay-content {
+    margin-top: 1.25rem;
+  }
+
+  .stage-list {
+    display: grid;
+    margin: 0 0 1rem;
+    padding: 0;
+    gap: 0;
+    border-block: 1px solid var(--color-line);
+    list-style: none;
+  }
+
+  .stage-list li {
+    display: grid;
+    padding-block: 0.8rem;
+    grid-template-columns: 2.5rem 1fr;
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  .stage-list li:last-child {
+    border-bottom: 0;
+  }
+
+  .stage-number,
+  .stage-list small {
+    color: var(--color-muted);
+    font-family: var(--font-sans);
+    font-size: 0.76rem;
+  }
+
+  .stage-list strong,
+  .stage-list small {
+    display: block;
+  }
+
+  .result-card h3 {
+    max-width: 42rem;
+    font-family: var(--font-serif);
+    font-size: clamp(1.35rem, 3vw, 1.85rem);
+    line-height: 1.4;
+  }
+
+  .result-detail {
+    display: grid;
+    margin-top: 1.2rem;
+    gap: 0.8rem;
+  }
+
+  .result-detail > div {
+    padding-top: 0.8rem;
+    border-top: 1px solid var(--color-line);
+  }
+
+  .result-detail p {
+    margin: 0.25rem 0 0;
+    color: var(--color-muted);
+  }
+
+  .warning-item.caution {
+    border-top-color: var(--color-focus);
+  }
+
+  figure {
+    margin: 1.25rem 0;
+  }
+
+  figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--color-line);
+    background: white;
+  }
+
+  figcaption {
+    margin-top: 0.55rem;
+    color: var(--color-muted);
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+  }
+
+  .verification-row {
+    align-items: center;
+    font-size: 0.82rem;
+  }
+
+  .custom-analysis {
+    margin-top: 2rem;
+    align-items: center;
+    background: var(--color-surface-muted);
+  }
+
+  .custom-analysis > div {
+    max-width: 35rem;
+  }
+
+  .custom-analysis p:not(.panel-label) {
+    margin-top: 0.45rem;
+    color: var(--color-muted);
+  }
+
+  .primary-link {
+    flex: none;
+  }
+
+  @media (min-width: 42rem) {
+    .input-grid,
+    .result-detail {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 40rem) {
+    .prepared-heading,
+    .verification-row,
+    .custom-analysis {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    summary,
+    .primary-link {
+      width: 100%;
+    }
+  }
+</style>

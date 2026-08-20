@@ -1,0 +1,170 @@
+---
+import { createHash } from 'node:crypto';
+import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
+import DcfaPreparedDemo from '../../components/DcfaPreparedDemo.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import preparedDemo from '../../data/dcfa/prepared-demo-v1.json';
+
+const colabUrl = 'https://colab.research.google.com/github/GepingChen/DCFA/blob/main/notebooks/DCFA_Custom_Analysis_Colab.ipynb';
+const repositoryUrl = 'https://github.com/GepingChen/DCFA';
+
+for (const asset of Object.values(preparedDemo.assets)) {
+  const path = resolve('public', asset.path.replace(/^\//, ''));
+  const observed = `sha256:${createHash('sha256').update(readFileSync(path)).digest('hex')}`;
+  if (observed !== asset.sha256) {
+    throw new Error(`DCFA prepared asset hash mismatch: ${asset.path}`);
+  }
+}
+---
+
+<BaseLayout
+  title="DCFA — Auditable causal analysis agent"
+  description="A static replay and user-owned Colab workflow for DCFA, an auditable agent for bounded continuous-treatment distributional-IV analysis."
+>
+  <header class="page-hero dcfa-hero">
+    <div class="shell reading-column">
+      <p class="eyebrow">DCFA · Auditable causal analysis</p>
+      <h1>From a bounded question to evidence—or a visible stop.</h1>
+      <p class="page-intro">DCFA compiles a narrow natural-language request into a typed specification, delegates numerical work to deterministic tools, blocks unsupported claims, and keeps the displayed answer tied to verified evidence.</p>
+      <div class="hero-links">
+        <a href="#prepared-demo-title">Replay the verified example</a>
+        <a href={colabUrl}>Open in Colab <span aria-hidden="true">↗</span></a>
+        <a href={repositoryUrl}>View source <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </header>
+
+  <section class="section" aria-labelledby="scope-title">
+    <div class="shell reading-column">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">My contribution</p>
+          <h2 id="scope-title">One causal design, one inspectable workflow.</h2>
+        </div>
+        <p>I designed and implemented the typed runtime, evidence ledger, support and failure gates, provider boundaries, independent artifact verifier, and the static/Colab release path shown here.</p>
+      </div>
+      <div class="scope-grid">
+        <article><h3>Supported</h3><p>One continuous outcome Y, one continuous treatment X, one scalar instrument Z, no baseline covariates W, and treatment levels inside empirical support.</p></article>
+        <article><h3>Blocked</h3><p>Binary or multi-arm treatment, added covariates, automatic instrument discovery, outside-support requests, provider failures, or evidence mismatches.</p></article>
+      </div>
+
+      <DcfaPreparedDemo demo={preparedDemo} colabUrl={colabUrl} />
+    </div>
+  </section>
+
+  <section class="section section-contrast" aria-labelledby="architecture-title">
+    <div class="shell reading-column">
+      <p class="eyebrow">Architecture</p>
+      <h2 id="architecture-title">The language model never owns the number.</h2>
+      <ol class="architecture-list">
+        <li><strong>Prompt</strong><span>A bounded question names a supported mean or median summary or contrast.</span></li>
+        <li><strong>Typed specification</strong><span>Gemini may compile symbolic low, center, and high labels; it receives no data rows or actual intervention values.</span></li>
+        <li><strong>Deterministic tool</strong><span>The DCFA runtime validates roles, diagnostics, support, managed TabPFN output, and the requested estimand.</span></li>
+        <li><strong>Evidence or stop</strong><span>A number appears only after evidence validation; unsupported or failed paths return no number.</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="limits-title">
+    <div class="shell reading-column">
+      <p class="eyebrow">Scope and limitations</p>
+      <h2 id="limits-title">A released website tool, not a released scientific claim.</h2>
+      <div class="limitations">
+        <p>The replay is a synthetic, precomputed, development-only demonstration. It makes no API call when opened and does not prove instrument validity, identification, estimator accuracy, or agent superiority.</p>
+        <p>The Colab route executes in the visitor's account. The question is sent to Google and confirmed Y/X/Z rows are sent separately to Prior Labs. Users must have permission to share their data and remain responsible for provider terms, quota, charges, and runtime availability.</p>
+        <p>Managed-service traceability is not bitwise reproducibility. Locked Track T evidence still requires a fixed real TabPFN checkpoint and runtime image.</p>
+      </div>
+      <div class="hero-links">
+        <a href={colabUrl}>Open the pinned Colab notebook <span aria-hidden="true">↗</span></a>
+        <a href={repositoryUrl}>Inspect DCFA on GitHub <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .dcfa-hero h1 {
+    max-width: 18ch;
+  }
+
+  .hero-links {
+    display: flex;
+    margin-top: 1.6rem;
+    flex-wrap: wrap;
+    gap: 0.65rem 1.2rem;
+    font-family: var(--font-sans);
+    font-size: 0.88rem;
+    font-weight: 700;
+  }
+
+  .hero-links a {
+    display: inline-flex;
+    min-height: 2.75rem;
+    align-items: center;
+  }
+
+  .scope-grid {
+    display: grid;
+    border-block: 1px solid var(--color-line);
+  }
+
+  .scope-grid article {
+    padding-block: 1.25rem;
+  }
+
+  .scope-grid article + article {
+    border-top: 1px solid var(--color-line);
+  }
+
+  .scope-grid p,
+  .limitations p,
+  .architecture-list span {
+    margin-bottom: 0;
+    color: var(--color-muted);
+  }
+
+  .architecture-list {
+    margin: 1.5rem 0 0;
+    padding: 0;
+    border-bottom: 1px solid var(--color-line);
+    list-style: none;
+  }
+
+  .architecture-list li {
+    display: grid;
+    padding-block: 1rem;
+    gap: 0.25rem 1.25rem;
+    border-top: 1px solid var(--color-line);
+  }
+
+  .architecture-list strong {
+    color: var(--color-accent-deep);
+    font-family: var(--font-sans);
+  }
+
+  .limitations {
+    display: grid;
+    gap: 1rem;
+  }
+
+  @media (min-width: 42rem) {
+    .scope-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .scope-grid article:first-child {
+      padding-right: 1.5rem;
+    }
+
+    .scope-grid article + article {
+      padding-left: 1.5rem;
+      border-top: 0;
+      border-left: 1px solid var(--color-line);
+    }
+
+    .architecture-list li {
+      grid-template-columns: 10rem 1fr;
+    }
+  }
+</style>

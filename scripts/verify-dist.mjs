@@ -1,3 +1,4 @@
+import { createHash } from 'node:crypto';
 import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 
@@ -6,6 +7,11 @@ const requiredFiles = [
   'index.html',
   'research/index.html',
   'projects/index.html',
+  'projects/dcfa/index.html',
+  'dcfa/prepared-demo-v1/prepared-demo.csv',
+  'dcfa/prepared-demo-v1/prepared-prompt.txt',
+  'dcfa/prepared-demo-v1/visitor-plot.png',
+  'dcfa/prepared-demo-v1/verification-summary.json',
   'blog/poetry/index.html',
   'blog/poetry/graduation-song/index.html',
   'blog/poetry/on-solid-things/index.html',
@@ -35,6 +41,8 @@ const walk = (directory) =>
   });
 
 const failures = [];
+
+const sha256 = (payload) => `sha256:${createHash('sha256').update(payload).digest('hex')}`;
 
 for (const file of requiredFiles) {
   if (!existsSync(join(dist, file))) failures.push(`Missing required output: ${file}`);
@@ -99,6 +107,77 @@ const presentationMarkers = [
 
 for (const marker of presentationMarkers) {
   if (!homeHtml.includes(marker)) failures.push(`Missing presentation content: ${marker}`);
+}
+
+const preparedDataPath = resolve('src/data/dcfa/prepared-demo-v1.json');
+const preparedData = JSON.parse(readFileSync(preparedDataPath, 'utf8'));
+const expectedDcfaAssets = {
+  prepared_csv: '/dcfa/prepared-demo-v1/prepared-demo.csv',
+  prepared_prompt: '/dcfa/prepared-demo-v1/prepared-prompt.txt',
+  verification_summary: '/dcfa/prepared-demo-v1/verification-summary.json',
+  visitor_plot: '/dcfa/prepared-demo-v1/visitor-plot.png',
+};
+
+for (const [name, expectedPath] of Object.entries(expectedDcfaAssets)) {
+  const asset = preparedData.assets?.[name];
+  if (asset?.path !== expectedPath) {
+    failures.push(`DCFA prepared asset path mismatch: ${name}`);
+    continue;
+  }
+  const observedHash = sha256(readFileSync(join(dist, expectedPath.replace(/^\//, ''))));
+  if (observedHash !== asset.sha256) failures.push(`DCFA prepared asset hash mismatch: ${name}`);
+}
+
+const sourceProjection = structuredClone(preparedData);
+delete sourceProjection.assets;
+delete sourceProjection.release_sha256;
+delete sourceProjection.source_visitor_result_sha256;
+const sourceProjectionHash = sha256(`${JSON.stringify(sourceProjection, null, 2)}\n`);
+if (sourceProjectionHash !== preparedData.source_visitor_result_sha256) {
+  failures.push('DCFA visitor projection no longer matches the verified source projection.');
+}
+
+const verificationSummary = JSON.parse(
+  readFileSync(join(dist, 'dcfa/prepared-demo-v1/verification-summary.json'), 'utf8'),
+);
+if (verificationSummary.release_sha256 !== preparedData.release_sha256) {
+  failures.push('DCFA release hash does not match the copied verification summary.');
+}
+if (verificationSummary.dcfa_release_commit !== preparedData.release.dcfa_commit) {
+  failures.push('DCFA release commit does not match the copied verification summary.');
+}
+
+const dcfaHtml = readFileSync(join(dist, 'projects/dcfa/index.html'), 'utf8');
+const requiredDcfaMarkers = [
+  'Replay the verified example',
+  'This replays a previously executed and independently verified workflow. No API call is made.',
+  'From the low to the high treatment level, the estimated median outcome increases by 4.47 outcome units.',
+  'Residual dependence remains',
+  'Open in Colab',
+  'https://colab.research.google.com/github/GepingChen/DCFA/blob/main/notebooks/DCFA_Custom_Analysis_Colab.ipynb',
+  'https://github.com/GepingChen/DCFA',
+];
+for (const marker of requiredDcfaMarkers) {
+  if (!dcfaHtml.includes(marker)) failures.push(`Missing DCFA public content: ${marker}`);
+}
+
+const forbiddenDcfaPatterns = [
+  /<iframe/i,
+  /fetch\s*\(/i,
+  /localStorage|sessionStorage/i,
+  /4\.46969806321701/,
+  /(?:evidence|bundle|specification|trace)_[0-9a-f]{12,}/i,
+  /DEVELOPMENT_[A-Z_]+/,
+  /website_demo_gemini_v1|tabpfn_client_managed_demo_v2/,
+  /api\.priorlabs\.ai/,
+];
+for (const pattern of forbiddenDcfaPatterns) {
+  if (pattern.test(dcfaHtml)) failures.push(`Forbidden DCFA public content: ${pattern}`);
+}
+
+const projectsHtml = readFileSync(join(dist, 'projects/index.html'), 'utf8');
+if (projectsHtml.includes('Three evidence-backed projects.')) {
+  failures.push('Projects page retains the stale hard-coded project count.');
 }
 
 for (const poem of bilingualPoems) {
