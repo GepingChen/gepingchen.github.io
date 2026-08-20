@@ -235,20 +235,12 @@ ul {
   text-transform: uppercase;
 }
 
-.profile-links,
 .text-links,
 .evidence-links,
 .footer-contact {
   display: flex;
   flex-wrap: wrap;
   gap: 0.65rem 1.25rem;
-}
-
-.profile-links {
-  margin-top: 1.8rem;
-  font-family: var(--font-sans);
-  font-size: 0.92rem;
-  font-weight: 650;
 }
 
 .home-section {
