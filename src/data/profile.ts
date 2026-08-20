@@ -3,7 +3,7 @@ export const profile = {
   initials: 'GC',
   headline: 'Statistics PhD Candidate working on AI-enhanced causal inference and tabular foundation models.',
   doctoralAdvisors: [
-    { name: 'Dr. Chunlin Li', url: 'https://www.stat.iastate.edu/people/chunlin-li' },
+    { name: 'Dr. Chunlin Li', url: 'https://statistics.as.virginia.edu/people/chunlin-li' },
     { name: 'Dr. Zhengyuan Zhu', url: 'https://www.stat.iastate.edu/people/zhengyuan-zhu' },
   ],
   undergraduateAdvisors: [
