@@ -1,5 +1,5 @@
 ---
-title: "TabCF-Agent"
+title: "Agentic TabCF"
 summary: "An auditable causal-analysis agent for TabCF that compiles bounded natural-language requests into typed specifications, delegates numerical work to deterministic tools, blocks unsupported claims, and links displayed results to verifiable evidence."
 startDate: "2026-08"
 endDate: null

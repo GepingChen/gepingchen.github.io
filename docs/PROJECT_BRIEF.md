@@ -83,7 +83,7 @@ Astro 保持默认静态输出，不添加服务端 adapter；只有未来确实
 ## 建议的信息架构
 
 - `/`：定位、包含当前身份、研究兴趣与本科/PhD 背景的三段短简介、双路径入口与紧凑的 News；联系方式通过个人链接与页脚提供。
-- `/projects/`：统一展示研究、论文与工程项目；TabCF 为第一个项目，TabCF-Agent 为第二个项目。
+- `/projects/`：统一展示研究、论文与工程项目；TabCF 为第一个项目，Agentic TabCF 为第二个项目。
 - `/blog/poetry/`：公开诗歌索引；每首诗使用独立静态页面。
 
 About 的当前身份、研究兴趣和教育背景直接放入首页的三段个人陈述；不设独立 Interests、Education、Selected work、Technical toolkit 或 Contact 板块。联系方式通过首页个人链接与页脚提供。CV 只作为私有来源，不复制进公开目录，也不创建 `/cv/`。除 Poetry 外，`/writing/` 相关类型只保留未来内容模型，不创建空路由。

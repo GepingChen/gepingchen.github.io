@@ -158,8 +158,8 @@ const dcfaHtml = readFileSync(join(dist, 'projects/dcfa/index.html'), 'utf8');
 const dcfaColabUrl =
   'https://colab.research.google.com/github/GepingChen/DCFA/blob/main/notebooks/DCFA_Custom_Analysis_Colab.ipynb';
 const requiredDcfaMarkers = [
-  'TabCF-Agent · Auditable causal analysis',
-  'TabCF-Agent release',
+  'Agentic TabCF · Auditable causal analysis',
+  'Agentic TabCF release',
   'Ask a causal question. Get an answer you can audit.',
   'See one analysis, start to finish.',
   'Show the verified result',
@@ -190,17 +190,17 @@ for (const pattern of forbiddenDcfaPatterns) {
 
 const projectsHtml = readFileSync(join(dist, 'projects/index.html'), 'utf8');
 if (!projectsHtml.includes(dcfaColabUrl)) {
-  failures.push('TabCF-Agent project card is missing the public Colab CTA.');
+  failures.push('Agentic TabCF project card is missing the public Colab CTA.');
 }
 if (projectsHtml.includes('Three evidence-backed projects.')) {
   failures.push('Projects page retains the stale hard-coded project count.');
 }
 const tabcfProjectPosition = projectsHtml.indexOf('<h3>TabCF</h3>');
-const tabcfAgentProjectPosition = projectsHtml.indexOf('<h3>TabCF-Agent</h3>');
-if (tabcfProjectPosition === -1 || tabcfAgentProjectPosition === -1) {
-  failures.push('Projects page must contain TabCF and TabCF-Agent.');
-} else if (tabcfProjectPosition >= tabcfAgentProjectPosition) {
-  failures.push('TabCF must be the first project and TabCF-Agent the second.');
+const agenticTabcfProjectPosition = projectsHtml.indexOf('<h3>Agentic TabCF</h3>');
+if (tabcfProjectPosition === -1 || agenticTabcfProjectPosition === -1) {
+  failures.push('Projects page must contain TabCF and Agentic TabCF.');
+} else if (tabcfProjectPosition >= agenticTabcfProjectPosition) {
+  failures.push('TabCF must be the first project and Agentic TabCF the second.');
 }
 if (projectsHtml.includes('<h3>DCFA</h3>')) {
   failures.push('The old DCFA project name remains on the Projects page.');
@@ -223,7 +223,7 @@ for (const marker of removedProjectDetailMarkers) {
   if (projectsHtml.includes(marker)) failures.push(`Removed project detail remains on Projects page: ${marker}`);
 }
 if (!projectsHtml.includes('>Demo<span aria-hidden="true"> ↗</span></a>')) {
-  failures.push('Projects page is missing the TabCF-Agent Demo link.');
+  failures.push('Projects page is missing the Agentic TabCF Demo link.');
 }
 
 for (const poem of bilingualPoems) {

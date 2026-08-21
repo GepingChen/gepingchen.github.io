@@ -5,7 +5,7 @@
 内容来源：`/Users/chgp/Desktop/intern_cv_26_1.tex`（只读）
 
 2026-08-19 更新：独立 Research 栏目已删除；当前导航为 Home、Projects、Poetry。TabCF
-论文与研究信息统一收拢到第一个 Project，TabCF-Agent 为第二个 Project。下文关于首次发布时
+论文与研究信息统一收拢到第一个 Project，Agentic TabCF 为第二个 Project。下文关于首次发布时
 Research 页面的记录仅保留为历史实施背景。
 
 ## 1. 已确定方向
@@ -64,7 +64,7 @@ Research 页面的记录仅保留为历史实施背景。
 当前采用精简项目列表：
 
 - TabCF
-- TabCF-Agent
+- Agentic TabCF
 
 ### CV 推导的背景内容
 

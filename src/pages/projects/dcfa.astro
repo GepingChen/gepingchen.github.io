@@ -12,20 +12,20 @@ for (const asset of Object.values(preparedDemo.assets)) {
   const path = resolve('public', asset.path.replace(/^\//, ''));
   const observed = `sha256:${createHash('sha256').update(readFileSync(path)).digest('hex')}`;
   if (observed !== asset.sha256) {
-    throw new Error(`TabCF-Agent prepared asset hash mismatch: ${asset.path}`);
+    throw new Error(`Agentic TabCF prepared asset hash mismatch: ${asset.path}`);
   }
 }
 ---
 
 <BaseLayout
-  title="TabCF-Agent — Causal answers you can audit"
-  description="See how TabCF-Agent turns a supported causal question into a verified answer—or stops when the evidence fails."
+  title="Agentic TabCF — Causal answers you can audit"
+  description="See how Agentic TabCF turns a supported causal question into a verified answer—or stops when the evidence fails."
 >
   <header class="page-hero dcfa-hero">
     <div class="shell reading-column">
-      <p class="eyebrow">TabCF-Agent · Auditable causal analysis</p>
+      <p class="eyebrow">Agentic TabCF · Auditable causal analysis</p>
       <h1>Ask a causal question. Get an answer you can audit.</h1>
-      <p class="page-intro">TabCF-Agent turns a supported plain-language request and a Y/X/Z dataset into a verified analysis. The language model structures the request; deterministic tools calculate and validate the result. If the checks fail, the agent returns no number.</p>
+      <p class="page-intro">Agentic TabCF turns a supported plain-language request and a Y/X/Z dataset into a verified analysis. The language model structures the request; deterministic tools calculate and validate the result. If the checks fail, the agent returns no number.</p>
       <div class="hero-actions" aria-label="Demo actions">
         <a class="hero-action-primary" href="#prepared-demo-title">See the verified demo <span aria-hidden="true">↓</span></a>
         <a href={colabUrl}>Run your own CSV in Colab <span aria-hidden="true">↗</span></a>
@@ -33,7 +33,7 @@ for (const asset of Object.values(preparedDemo.assets)) {
     </div>
   </header>
 
-  <section class="section demo-section" aria-label="Verified TabCF-Agent demo">
+  <section class="section demo-section" aria-label="Verified Agentic TabCF demo">
     <div class="shell reading-column">
       <DcfaPreparedDemo demo={preparedDemo} colabUrl={colabUrl} />
     </div>
