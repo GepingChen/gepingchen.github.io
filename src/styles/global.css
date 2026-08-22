@@ -187,6 +187,12 @@ ul {
   max-width: 54rem;
 }
 
+.home-intro h1 {
+  margin-bottom: 1.15rem;
+  font-size: clamp(2.1rem, 4.8vw, 3rem);
+  letter-spacing: -0.035em;
+}
+
 .home-portrait {
   width: 7.5rem;
   margin: 0 0 1.5rem;
