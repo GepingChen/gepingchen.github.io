@@ -7,6 +7,7 @@ const requiredFiles = [
   'index.html',
   'projects/index.html',
   'projects/dcfa/index.html',
+  'images/agentic-tabcf-system-overview.svg',
   'dcfa/prepared-demo-v1/prepared-demo.csv',
   'dcfa/prepared-demo-v1/prepared-prompt.txt',
   'dcfa/prepared-demo-v1/visitor-plot.png',
@@ -224,6 +225,21 @@ for (const marker of removedProjectDetailMarkers) {
 }
 if (!projectsHtml.includes('>Demo<span aria-hidden="true"> ↗</span></a>')) {
   failures.push('Projects page is missing the Agentic TabCF Demo link.');
+}
+const requiredAgenticTabcfFigureMarkers = [
+  '/images/agentic-tabcf-system-overview.svg',
+  'Open full-size system diagram',
+  'System flow for Agentic TabCF:',
+];
+for (const marker of requiredAgenticTabcfFigureMarkers) {
+  if (!projectsHtml.includes(marker)) failures.push(`Projects page is missing the Agentic TabCF figure: ${marker}`);
+}
+const agenticTabcfFigure = readFileSync(join(dist, 'images/agentic-tabcf-system-overview.svg'), 'utf8');
+if (!agenticTabcfFigure.includes('>Agentic TabCF</text>')) {
+  failures.push('Agentic TabCF system diagram is missing its public title.');
+}
+if (agenticTabcfFigure.includes('>TabCF-Agent</text>')) {
+  failures.push('Agentic TabCF system diagram retains the former public title.');
 }
 
 for (const poem of bilingualPoems) {

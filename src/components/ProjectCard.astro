@@ -20,4 +20,20 @@ const { data } = project;
       <a href={link.url}>{link.label}<span aria-hidden="true"> ↗</span></a>
     ))}
   </div>
+  {data.cover && (
+    <figure class="project-figure">
+      <img
+        src={data.cover.src}
+        alt={data.cover.alt}
+        width="3840"
+        height="2160"
+        loading="lazy"
+        decoding="async"
+      />
+      <figcaption>
+        <span>{data.cover.caption}</span>
+        <a href={data.cover.src}>{data.cover.openLabel}<span aria-hidden="true"> ↗</span></a>
+      </figcaption>
+    </figure>
+  )}
 </article>

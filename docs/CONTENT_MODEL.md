@@ -37,7 +37,7 @@ links:
   - label: "Repository"
     url: "https://example.com"
 tags: []
-cover: null
+cover: null # or { src, alt, caption, openLabel } for a public project figure
 featured: false
 order: 0
 draft: true

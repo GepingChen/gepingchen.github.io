@@ -7,6 +7,13 @@ const namedLink = z.object({
   url: z.url(),
 });
 
+const projectCover = z.object({
+  src: z.string().startsWith('/'),
+  alt: z.string().min(1),
+  caption: z.string().min(1),
+  openLabel: z.string().min(1),
+});
+
 const editorialFields = {
   order: z.number().int().nonnegative().default(0),
   draft: z.boolean().default(true),
@@ -39,6 +46,7 @@ const projects = defineCollection({
     contributions: z.array(z.string().min(1)).min(1),
     methods: z.array(z.string().min(1)).min(1),
     links: z.array(namedLink).min(1),
+    cover: projectCover.nullable().default(null),
     tags: z.array(z.string().min(1)).default([]),
     featured: z.boolean().default(false),
     ...editorialFields,
