@@ -228,11 +228,14 @@ if (!projectsHtml.includes('>Demo<span aria-hidden="true"> ↗</span></a>')) {
 }
 const requiredAgenticTabcfFigureMarkers = [
   '/images/agentic-tabcf-system-overview.svg',
-  'Open full-size system diagram',
   'System flow for Agentic TabCF:',
+  'An agentic implementation that explores how large language models and tabular foundation models can work together.',
 ];
 for (const marker of requiredAgenticTabcfFigureMarkers) {
   if (!projectsHtml.includes(marker)) failures.push(`Projects page is missing the Agentic TabCF figure: ${marker}`);
+}
+for (const marker of ['Open full-size system diagram', 'System overview:']) {
+  if (projectsHtml.includes(marker)) failures.push(`Projects page retains removed Agentic TabCF figure copy: ${marker}`);
 }
 const agenticTabcfFigure = readFileSync(join(dist, 'images/agentic-tabcf-system-overview.svg'), 'utf8');
 if (!agenticTabcfFigure.includes('>Agentic TabCF</text>')) {

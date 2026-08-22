@@ -10,8 +10,6 @@ const namedLink = z.object({
 const projectCover = z.object({
   src: z.string().startsWith('/'),
   alt: z.string().min(1),
-  caption: z.string().min(1),
-  openLabel: z.string().min(1),
 });
 
 const editorialFields = {

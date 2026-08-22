@@ -1,6 +1,6 @@
 ---
 title: "Agentic TabCF"
-summary: "An auditable causal-analysis agent for TabCF that compiles bounded natural-language requests into typed specifications, delegates numerical work to deterministic tools, blocks unsupported claims, and links displayed results to verifiable evidence."
+summary: "An agentic implementation that explores how large language models and tabular foundation models can work together."
 startDate: "2026-08"
 endDate: null
 status: "active"
@@ -23,8 +23,6 @@ links:
 cover:
   src: "/images/agentic-tabcf-system-overview.svg"
   alt: "System flow for Agentic TabCF: a natural-language question becomes a typed specification, deterministic TabCF-IV stages compute supported results, evidence gates block unsupported requests, and one validated bundle produces visitor and audit outputs."
-  caption: "System overview: the language model structures intent, deterministic tools compute, and evidence gates control what can be shown."
-  openLabel: "Open full-size system diagram"
 tags:
   - "Causal agents"
   - "Tabular foundation models"

@@ -11,15 +11,6 @@ const { data } = project;
 
 <article class="project-card">
   <h3>{data.title}</h3>
-  <p class="project-summary">{data.summary}</p>
-  <ul class="tag-list" aria-label="Keywords">
-    {data.methods.map((method) => <li>{method}</li>)}
-  </ul>
-  <div class="evidence-links" aria-label={`Evidence links for ${data.title}`}>
-    {data.links.map((link) => (
-      <a href={link.url}>{link.label}<span aria-hidden="true"> ↗</span></a>
-    ))}
-  </div>
   {data.cover && (
     <figure class="project-figure">
       <img
@@ -30,10 +21,15 @@ const { data } = project;
         loading="lazy"
         decoding="async"
       />
-      <figcaption>
-        <span>{data.cover.caption}</span>
-        <a href={data.cover.src}>{data.cover.openLabel}<span aria-hidden="true"> ↗</span></a>
-      </figcaption>
     </figure>
   )}
+  <p class="project-summary">{data.summary}</p>
+  <ul class="tag-list" aria-label="Keywords">
+    {data.methods.map((method) => <li>{method}</li>)}
+  </ul>
+  <div class="evidence-links" aria-label={`Evidence links for ${data.title}`}>
+    {data.links.map((link) => (
+      <a href={link.url}>{link.label}<span aria-hidden="true"> ↗</span></a>
+    ))}
+  </div>
 </article>
