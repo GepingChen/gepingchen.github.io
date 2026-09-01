@@ -20,6 +20,8 @@ links:
     url: "https://gepingchen.github.io/projects/dcfa/"
   - label: "Colab"
     url: "https://colab.research.google.com/github/GepingChen/DCFA/blob/main/notebooks/DCFA_Custom_Analysis_Colab.ipynb"
+  - label: "HuggingFace Space"
+    url: "https://huggingface.co/spaces/GPChen01/dcfa-zerogpu"
 cover:
   src: "/images/agentic-tabcf-system-overview.svg"
   alt: "System flow for Agentic TabCF: a natural-language question becomes a typed specification, deterministic TabCF-IV stages compute supported results, evidence gates block unsupported requests, and one validated bundle produces visitor and audit outputs."
