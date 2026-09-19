@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import { zhimaPhotos } from '../data/zhima-photos';
 ---
 
 <BaseLayout
@@ -28,7 +30,24 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <section class="section section-contrast" aria-labelledby="zhima-photos-title">
     <div class="shell reading-column zhima-photos">
       <h2 id="zhima-photos-title">Photos</h2>
-      <p>A few photos of Zhima will be added here soon.</p>
+      <div class="photo-grid">
+        {zhimaPhotos.map((photo) => (
+          <figure>
+            <div class="photo-frame">
+              <Image
+                src={photo.image}
+                alt={photo.alt}
+                width={900}
+                format="webp"
+                quality={82}
+                loading="lazy"
+                style={`object-position: ${photo.position}; transform: scale(${photo.scale}); transform-origin: ${photo.position};`}
+              />
+            </div>
+            <figcaption lang="zh">{photo.caption}</figcaption>
+          </figure>
+        ))}
+      </div>
     </div>
   </section>
 </BaseLayout>
@@ -38,8 +57,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     margin-bottom: 0.9rem;
   }
 
-  .zhima-story p,
-  .zhima-photos p {
+  .zhima-story p {
     max-width: 42rem;
     margin-bottom: 0;
   }
@@ -48,7 +66,45 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     font-size: clamp(1.08rem, 2vw, 1.2rem);
   }
 
-  .zhima-photos p {
-    color: var(--color-muted);
+  .photo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+  }
+
+  .photo-grid figure {
+    min-width: 0;
+    margin: 0;
+  }
+
+  .photo-frame {
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    border-radius: 0.35rem;
+    background: var(--color-line);
+  }
+
+  .photo-frame img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  figcaption {
+    margin-top: 0.75rem;
+    font-family: var(--font-sans);
+    font-size: 0.88rem;
+    text-align: center;
+  }
+
+  @media (max-width: 36rem) {
+    .photo-grid {
+      grid-template-columns: 1fr;
+      max-width: 16rem;
+      margin-inline: auto;
+      gap: 1.75rem;
+    }
   }
 </style>
