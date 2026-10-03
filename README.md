@@ -42,3 +42,7 @@ npm run verify
 - Poetry
 
 About 的当前身份、研究兴趣和教育背景以三段简短个人陈述呈现，不另设 Interests、Education、Selected work、Technical toolkit 或 Contact 板块；Home 保留紧凑的 News，联系方式通过首页个人链接与页脚提供。CV 只作为内容来源，不创建下载文件或独立公开路由。Poetry 已因首篇真实内容而公开；其他 Writing/Posts 类型仍只保留内容模型，不创建空页面或主导航入口。
+
+## 私有 CV 子项目
+
+本地 `cv/` 用于维护简历母版与岗位定制版本，操作说明见 `cv/README.md`，代理规则见 `cv/AGENTS.md`。整个目录被网站 Git 忽略，使用独立、无远程的本地 Git；从网站仓库克隆不会取得这些私有文件。本地 Git 仅提供版本历史，不是远程备份。不要强制添加该目录、导入网站内容或发布下载入口。

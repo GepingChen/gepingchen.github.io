@@ -94,3 +94,7 @@ Never fabricate commands in status reports. If the project has no runnable check
 ## Scope of This File
 
 This file applies to the entire repository. Add a nested `AGENTS.md` only when a subdirectory genuinely needs different instructions; the more specific file then governs that subtree.
+
+## Private CV Subproject
+
+`cv/` is a private, ignored subproject governed by `cv/AGENTS.md`. It has its own local Git repository with no remote. The website's default commit/push rule does not apply to its contents. Never force-add it to this repository, import it into site content, copy it into `public/`, or expose a CV route/download. Only generic isolation configuration and documentation belong in the public repository. CV facts require separate review before any website use.

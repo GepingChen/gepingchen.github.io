@@ -43,3 +43,6 @@ Thumbs.db
 # Private source material and drafts
 private/
 drafts-private/
+
+# Private CV subproject (independent local repository)
+/cv/
