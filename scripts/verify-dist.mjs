@@ -1,12 +1,13 @@
 import { createHash } from 'node:crypto';
 import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
-import { join, resolve } from 'node:path';
+import { join, relative, resolve } from 'node:path';
 
 const dist = resolve('dist');
 const requiredFiles = [
   'index.html',
   'projects/index.html',
   'projects/dcfa/index.html',
+  'projects/agentic-tabcf/index.html',
   'images/agentic-tabcf-system-overview.svg',
   'dcfa/prepared-demo-v1/prepared-demo.csv',
   'dcfa/prepared-demo-v1/prepared-prompt.txt',
@@ -67,16 +68,22 @@ for (const file of htmlFiles) {
 
   const references = [...html.matchAll(/(?:href|src)=["']([^"']+)["']/g)].map((match) => match[1]);
   for (const reference of references) {
-    if (/^(?:https?:|mailto:|#|data:)/.test(reference)) continue;
+    const url = new URL(reference, `https://gepingchen.github.io/${relative(dist, file)}`);
+    if (url.origin !== 'https://gepingchen.github.io') continue;
 
-    const pathname = reference.split(/[?#]/, 1)[0];
-    const relativePath = pathname.replace(/^\//, '');
-    const expectedPath = pathname.endsWith('/')
+    const relativePath = decodeURIComponent(url.pathname).replace(/^\//, '');
+    const expectedPath = url.pathname.endsWith('/')
       ? join(dist, relativePath, 'index.html')
       : join(dist, relativePath);
 
     if (!existsSync(expectedPath)) {
       failures.push(`Broken internal reference in ${file}: ${reference}`);
+    } else if (url.hash && expectedPath.endsWith('.html')) {
+      const targetHtml = readFileSync(expectedPath, 'utf8');
+      const ids = [...targetHtml.matchAll(/\bid=["']([^"']+)["']/g)].map((match) => match[1]);
+      if (!ids.includes(decodeURIComponent(url.hash.slice(1)))) {
+        failures.push(`Broken internal anchor in ${file}: ${reference}`);
+      }
     }
   }
 }
@@ -155,14 +162,15 @@ if (verificationSummary.dcfa_release_commit !== preparedData.release.dcfa_commit
   failures.push('DCFA release commit does not match the copied verification summary.');
 }
 
-const dcfaHtml = readFileSync(join(dist, 'projects/dcfa/index.html'), 'utf8');
+const dcfaHtml = readFileSync(join(dist, 'projects/agentic-tabcf/index.html'), 'utf8');
 const dcfaColabUrl =
   'https://colab.research.google.com/github/GepingChen/DCFA/blob/main/notebooks/DCFA_Custom_Analysis_Colab.ipynb';
 const requiredDcfaMarkers = [
-  'Agentic TabCF · Auditable causal analysis',
+  'Agentic TabCF — Auditable Causal Analysis',
   'Agentic TabCF release',
-  'Ask a causal question. Get an answer you can audit.',
-  'See one analysis, start to finish.',
+  'Example analysis: from question to evidence',
+  'Try on Hugging Face ZeroGPU',
+  'https://huggingface.co/spaces/GPChen01/dcfa-zerogpu',
   'Show the verified result',
   'This replays a previously executed and independently verified workflow. No API call is made.',
   'From the low to the high treatment level, the estimated median outcome increases by 4.47 outcome units.',

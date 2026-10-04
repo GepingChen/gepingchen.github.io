@@ -1,0 +1,209 @@
+---
+import { createHash } from 'node:crypto';
+import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
+import { getEntry } from 'astro:content';
+import DcfaPreparedDemo from '../../components/DcfaPreparedDemo.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import preparedDemo from '../../data/dcfa/prepared-demo-v1.json';
+
+const colabUrl = 'https://colab.research.google.com/github/GepingChen/DCFA/blob/main/notebooks/DCFA_Custom_Analysis_Colab.ipynb';
+const project = await getEntry('projects', 'agentic-tabcf');
+const spaceUrl = project!.data.links.find((link) => link.label === 'Hugging Face ZeroGPU')!.url;
+
+for (const asset of Object.values(preparedDemo.assets)) {
+  const path = resolve('public', asset.path.replace(/^\//, ''));
+  const observed = `sha256:${createHash('sha256').update(readFileSync(path)).digest('hex')}`;
+  if (observed !== asset.sha256) {
+    throw new Error(`Agentic TabCF prepared asset hash mismatch: ${asset.path}`);
+  }
+}
+---
+
+<BaseLayout
+  title="Agentic TabCF — Auditable Causal Analysis"
+  description="See how Agentic TabCF turns a supported causal question into a verified answer—or stops when the evidence fails."
+>
+  <header class="page-hero agentic-tabcf-hero">
+    <div class="shell reading-column">
+      <p class="eyebrow">Auditable causal analysis</p>
+      <h1>Agentic TabCF</h1>
+      <p class="page-intro">Agentic TabCF turns a supported plain-language request and a Y/X/Z dataset into a verified analysis. The language model structures the request; deterministic tools calculate and validate the result. If the checks fail, the agent returns no number.</p>
+      <div class="hero-actions" aria-label="Demo actions">
+        <a class="hero-action-primary" href={spaceUrl}>Try on Hugging Face ZeroGPU <span aria-hidden="true">↗</span></a>
+        <a href="#demo">Explore the example analysis <span aria-hidden="true">↓</span></a>
+        <a href={colabUrl}>Run your own CSV in Colab <span aria-hidden="true">↗</span></a>
+      </div>
+      <p class="demo-hint">Open the interactive app to explore an example report or upload your CSV.</p>
+    </div>
+  </header>
+
+  <section class="section demo-section" aria-label="Verified Agentic TabCF demo">
+    <div class="shell reading-column">
+      <DcfaPreparedDemo demo={preparedDemo} colabUrl={colabUrl} />
+    </div>
+  </section>
+
+  <section class="section section-contrast" aria-labelledby="scope-title">
+    <div class="shell reading-column">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">What I built</p>
+          <h2 id="scope-title">One focused workflow, with explicit limits.</h2>
+        </div>
+        <p>I designed and implemented the typed runtime, evidence ledger, support and failure gates, provider boundaries, independent artifact verifier, and the static/Colab release path shown here.</p>
+      </div>
+      <div class="scope-grid">
+        <article><h3>Supported</h3><p>One continuous outcome Y, one continuous treatment X, one scalar instrument Z, no baseline covariates W, and treatment levels inside empirical support.</p></article>
+        <article><h3>Blocked</h3><p>Binary or multi-arm treatment, added covariates, automatic instrument discovery, outside-support requests, provider failures, or evidence mismatches.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="architecture-title">
+    <div class="shell reading-column">
+      <p class="eyebrow">Architecture</p>
+      <h2 id="architecture-title">The model interprets the question. Tools own the math.</h2>
+      <ol class="architecture-list">
+        <li><strong>Interpret</strong><span>Gemini turns a supported question into a typed specification. It receives no data rows or actual intervention values.</span></li>
+        <li><strong>Calculate</strong><span>The deterministic runtime validates roles and support, runs managed TabPFN, and computes the requested estimand.</span></li>
+        <li><strong>Verify</strong><span>A number appears only after evidence validation. Unsupported or failed paths return no number.</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section section-contrast" aria-labelledby="limits-title">
+    <div class="shell reading-column">
+      <p class="eyebrow">Scope and limitations</p>
+      <h2 id="limits-title">What this demo shows—and what it does not.</h2>
+      <div class="limitations">
+        <p>The replay is a synthetic, precomputed, development-only demonstration. It makes no API call when opened and does not prove instrument validity, identification, estimator accuracy, or agent superiority.</p>
+        <p>The Colab route executes in the visitor's account. The question is sent to Google and confirmed Y/X/Z rows are sent separately to Prior Labs. Users must have permission to share their data and remain responsible for provider terms, quota, charges, and runtime availability.</p>
+        <p>Managed-service traceability is not bitwise reproducibility. Locked Track T evidence still requires a fixed real TabPFN checkpoint and runtime image.</p>
+      </div>
+      <div class="hero-links">
+        <a href={preparedDemo.assets.verification_summary.path}>Inspect the public verification summary</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .demo-hint {
+    margin: 0.8rem 0 0;
+    color: var(--color-muted);
+    font-size: 0.92rem;
+  }
+
+  .hero-actions,
+  .hero-links {
+    display: flex;
+    margin-top: 1.6rem;
+    flex-wrap: wrap;
+    gap: 0.65rem 1.2rem;
+    font-family: var(--font-sans);
+    font-size: 0.88rem;
+    font-weight: 700;
+  }
+
+  .hero-actions a,
+  .hero-links a {
+    display: inline-flex;
+    min-height: 2.75rem;
+    padding-inline: 0.9rem;
+    align-items: center;
+    gap: 0.35rem;
+    border: 1px solid var(--color-accent-deep);
+    border-radius: 0.25rem;
+    text-decoration: none;
+  }
+
+  .hero-actions .hero-action-primary {
+    background: var(--color-accent-deep);
+    color: white;
+  }
+
+  .hero-actions .hero-action-primary:hover {
+    background: var(--color-accent);
+    color: white;
+  }
+
+  .demo-section {
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  .scope-grid {
+    display: grid;
+    border-block: 1px solid var(--color-line);
+  }
+
+  .scope-grid article {
+    padding-block: 1.25rem;
+  }
+
+  .scope-grid article + article {
+    border-top: 1px solid var(--color-line);
+  }
+
+  .scope-grid p,
+  .limitations p,
+  .architecture-list span {
+    margin-bottom: 0;
+    color: var(--color-muted);
+  }
+
+  .architecture-list {
+    margin: 1.5rem 0 0;
+    padding: 0;
+    border-bottom: 1px solid var(--color-line);
+    list-style: none;
+  }
+
+  .architecture-list li {
+    display: grid;
+    padding-block: 1rem;
+    gap: 0.25rem 1.25rem;
+    border-top: 1px solid var(--color-line);
+  }
+
+  .architecture-list strong {
+    color: var(--color-accent-deep);
+    font-family: var(--font-sans);
+  }
+
+  .limitations {
+    display: grid;
+    gap: 1rem;
+  }
+
+  @media (min-width: 42rem) {
+    .scope-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .scope-grid article:first-child {
+      padding-right: 1.5rem;
+    }
+
+    .scope-grid article + article {
+      padding-left: 1.5rem;
+      border-top: 0;
+      border-left: 1px solid var(--color-line);
+    }
+
+    .architecture-list li {
+      grid-template-columns: 10rem 1fr;
+    }
+  }
+
+  @media (max-width: 40rem) {
+    .hero-actions {
+      align-items: stretch;
+      flex-direction: column;
+    }
+
+    .hero-actions a {
+      justify-content: center;
+    }
+  }
+</style>

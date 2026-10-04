@@ -17,10 +17,10 @@ methods:
   - "Static web architecture"
 links:
   - label: "Demo"
-    url: "https://gepingchen.github.io/projects/dcfa/"
+    url: "https://gepingchen.github.io/projects/agentic-tabcf/"
   - label: "Colab"
     url: "https://colab.research.google.com/github/GepingChen/DCFA/blob/main/notebooks/DCFA_Custom_Analysis_Colab.ipynb"
-  - label: "HuggingFace Space"
+  - label: "Hugging Face ZeroGPU"
     url: "https://huggingface.co/spaces/GPChen01/dcfa-zerogpu"
 cover:
   src: "/images/agentic-tabcf-system-overview.svg"

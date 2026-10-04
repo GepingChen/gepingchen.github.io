@@ -41,11 +41,11 @@ const { demo, colabUrl } = Astro.props;
 const previewColumns = ['Y', 'X', 'Z'];
 ---
 
-<section class="prepared-demo" aria-labelledby="prepared-demo-title">
+<section class="prepared-demo" aria-labelledby="demo">
   <div class="prepared-heading">
     <div>
       <p class="eyebrow">Verified demo</p>
-      <h2 id="prepared-demo-title">See one analysis, start to finish.</h2>
+      <h2 id="demo" tabindex="-1">Example analysis: from question to evidence</h2>
     </div>
     <p class="release-mark">Agentic TabCF release <code>{demo.release.dcfa_commit.slice(0, 12)}</code></p>
   </div>

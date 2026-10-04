@@ -5,7 +5,7 @@ import sitemap from '@astrojs/sitemap';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://gepingchen.github.io',
-  integrations: [sitemap()],
+  integrations: [sitemap({ filter: (page) => !page.endsWith('/projects/dcfa/') })],
   output: 'static',
   trailingSlash: 'always',
 });

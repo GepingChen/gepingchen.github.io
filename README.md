@@ -41,6 +41,10 @@ npm run verify
 - Projects（包括研究项目、论文与证据链接）
 - Poetry
 
+Agentic TabCF 项目页使用 `/projects/agentic-tabcf/`，首屏突出 Hugging Face ZeroGPU 入口。
+旧 `/projects/dcfa/` 地址保留静态跳转；站内链接和 sitemap 使用新地址。页内跳转在 JavaScript
+可用时保持地址栏干净并转移键盘焦点；禁用 JavaScript 时仍可使用原生锚点导航。
+
 About 的当前身份、研究兴趣和教育背景以三段简短个人陈述呈现，不另设 Interests、Education、Selected work、Technical toolkit 或 Contact 板块；Home 保留紧凑的 News，联系方式通过首页个人链接与页脚提供。CV 只作为内容来源，不创建下载文件或独立公开路由。Poetry 已因首篇真实内容而公开；其他 Writing/Posts 类型仍只保留内容模型，不创建空页面或主导航入口。
 
 ## 私有 CV 子项目
